@@ -58,8 +58,8 @@ $passwordGrant->setVerifyCredentialsCallback(function ($username, $password) use
 }); 
 
 
-$authorize = function ($scope) use ($resourceServer) {
-    return function () use ($scope, $resourceServer) {
+$authorize = function () use ($resourceServer) {
+    return function () use ($resourceServer) {
 		//401 = Unauthorized
         //403 = Forbidden
 
@@ -70,10 +70,10 @@ $authorize = function ($scope) use ($resourceServer) {
 
         	if($authenticated === false) 
             	$app->halt(401, 'Unauthorized');
-            else {
-            	if (!$resourceServer->getAccessToken()->hasScope($scope)) 
-            		$app->halt(403, 'Forbidden');
-            }
+            //else {
+            	//if (!$resourceServer->getAccessToken()->hasScope($scope)) 
+            		//$app->halt(403, 'Forbidden');
+            //}
         } catch(\League\OAuth2\Server\Exception\OAuthException $e) {
         	$error = json_encode([
 		        'error'     =>  $e->errorType,
