@@ -1,0 +1,8 @@
+#RewriteEngine On
+#RewriteRule ^$ app [L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule  ^$ public/    [L]
+    RewriteRule  ((?s).*) public/$1 [L]
+</IfModule>
