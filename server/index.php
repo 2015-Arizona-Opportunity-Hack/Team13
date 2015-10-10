@@ -142,9 +142,6 @@ $app->get('/', function() use ($app) {
 });
 
 
-
-
-
 $routeFiles = (array) glob('routes/*.php');
 foreach($routeFiles AS $routeFile) {
     require $routeFile;
