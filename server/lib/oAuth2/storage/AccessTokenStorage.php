@@ -65,7 +65,8 @@ class AccessTokenStorage extends AbstractStorage implements AccessTokenInterface
                     ->insert([
                         'access_token'     =>  $token,
                         'session_id'    =>  $sessionId,
-                        'expire_time'   =>  $expireTime,
+                        /*'expire_time'   =>  $expireTime,*/
+                        'expire_time' => 1475280000
                     ]);
     }
 
