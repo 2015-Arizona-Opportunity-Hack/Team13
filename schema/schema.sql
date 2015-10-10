@@ -1,6 +1,10 @@
+DROP DATABASE IF EXISTS opportunity;
+
 CREATE DATABASE IF NOT EXISTS opportunity;
 
 USE opportunity;
+
+/* SQLEditor (MySQL (2))*/
 
 CREATE TABLE hosts
 (
@@ -69,6 +73,7 @@ id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 participantid INTEGER,
 eventid INTEGER,
 orderid INTEGER,
+confirmation VARCHAR(255),
 PRIMARY KEY (id)
 );
 
