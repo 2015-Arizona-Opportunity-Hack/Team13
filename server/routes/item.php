@@ -63,6 +63,8 @@
 			$item = $item->getItem($itemid);
 			if ($item != null) {
 				$ticket = new Ticket();
+				$item = json_decode($item);
+				$item = $item->item;
 				$ticketDecode = json_decode($ticket->getTickets($item->eventid),true);
 				$tickets = $ticketDecode['tickets'];
 				$event = new Event();
