@@ -57,7 +57,12 @@
 		public function getItems($eventid) {
 			$items = Item::where('eventid', $eventid)->get();
 			if ($items != null) {
-				return $items;	
+				$array = array('success' => true,
+					'items' => $items);
+
+				return json_encode($array);
+
+
 			} 
 			else {
 				return "NO ITEMS!";
