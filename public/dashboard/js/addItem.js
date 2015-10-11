@@ -74,6 +74,8 @@ $(function() {
 	            		var id = $(this).attr('id');
 	            		viewItem(id);
 	            	});
+
+	            	checkWinners(json.items)
 	            }
 	        },
 	        error: function(json) {
@@ -82,6 +84,34 @@ $(function() {
 	        }
 
 	    });
+    }
+
+    function checkWinners(json) {
+    	console.log('winners');
+
+    	$.each(json, function(){
+    		console.log($(this));
+    		$.ajax({
+		        type: 'GET',
+		        url: '../../server/item/winner/' + $(this)[0].id,
+		        dataType: 'JSON',
+		        headers: {
+			    "Authorization": "Bearer " + access_token
+			  	},
+		        success: function(json) {
+		        	console.log('looking up item');
+		        	console.log(json);
+		            if(json.success != false) {
+		            	//Display winner
+		            	var test = $('div#'+param('id')+' span[name=winnername]').html(json.winner.name);
+		            	console.log(test);
+		            }
+		        }
+
+		    });
+    	});
+
+    	
     }
 
     function viewItem(id) {
