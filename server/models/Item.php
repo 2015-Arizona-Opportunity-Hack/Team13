@@ -53,5 +53,10 @@
 				return json_encode($array);	
 			}
 		}
+
+		public function getItems($eventid) {
+			$items = Item::where('eventid', $eventid)->get();
+			echo $items;
+		}
 	}
 ?>
