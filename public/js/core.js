@@ -11,8 +11,7 @@ $(document).ready(function() {
 var userList = new List('users', options);
 /* ----Objects Start---- */
 /* Host */
-function host(id, firstName, lastName, email, phone, userName, password) {
-	this.id = id;
+function host(firstName, lastName, email, phone, userName, password) {
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.email = email;
@@ -22,8 +21,7 @@ function host(id, firstName, lastName, email, phone, userName, password) {
 }
 
 /* Event */
-function event(id, hostId, name, startDate, endDate, addr1, addr2, city, state, zip, isLocal, isVirtual, ticketPrice, description) {
-	this.id = id;
+function event(hostId, name, startDate, endDate, addr1, addr2, city, state, zip, isLocal, isVirtual, ticketPrice, description) {
 	this.hostId = hostId;
 	this.name = name;
 	this.startDate = startDate;
@@ -40,8 +38,7 @@ function event(id, hostId, name, startDate, endDate, addr1, addr2, city, state, 
 }
 
 /* Item */
-function item(id, eventId, name, description, pathToPic, storePrice) {
-	this.id = id;
+function item(eventId, name, description, pathToPic, storePrice) {
 	this.eventId = eventId;
 	this.name = name;
 	this.description = description;
@@ -50,15 +47,13 @@ function item(id, eventId, name, description, pathToPic, storePrice) {
 }
 
 /* Order */
-function order(id, orderNumber, ticketQuantity) {
-	this.id = id;
+function order(orderNumber, ticketQuantity) {
 	this.orderNumber = orderNumber;
 	this.ticketQuantity = ticketQuantity;
 }
 
 /* Participant */
 function participant(id, eventId, name, email, phone, orderId) {
-	this.id = id;
 	this.eventId = eventId;
 	this.name = name;
 	this.email = email;
@@ -68,7 +63,6 @@ function participant(id, eventId, name, email, phone, orderId) {
 
 /* Ticket */
 function ticket(id, particiapntId, eventId, orderId, confirmation) {
-	this.id = id;
 	this.particiapntId = particiapntId;
 	this.eventId = eventId;
 	this.orderId = orderId;
@@ -77,7 +71,6 @@ function ticket(id, particiapntId, eventId, orderId, confirmation) {
 
 /* Winner */
 function winner(id, itemId, participantId) {
-	this.id = id;
 	this.itemId = itemId;
 	thi.particiapntId = particiapntId;
 }
@@ -115,11 +108,15 @@ function signUp() {
 	var data = signUpForm.serializeArray();
     $.ajax({
         type: 'POST',
-        url: 'Sign Up API',
+        url: 'server/index.php/host',
         data: data,
         dataType: 'JSON',
         success: function(json) {
             console.log(json);
+            swal("Successfully Registered!", "Sign in with new credentials.", "success")
+        },
+        error: function() {
+        	sweetAlert("Invalid Registration", "Please try again.", "error");
         }
     });
 }
