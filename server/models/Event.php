@@ -72,6 +72,16 @@
 			return false;
 		}
 
+		public function getEvent($eventid) {
+			$event = Event::where('id', $eventid)->first();
+			if($event != null) {
+				return $event;
+			}
+			else {
+				echo "EVENT NOT FOUND!";
+			}
+		}
+
 	}
 
 ?>
