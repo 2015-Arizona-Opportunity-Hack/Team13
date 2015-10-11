@@ -104,7 +104,37 @@ $(function() {
     }
 
     function addItem() {
-
+    	var item = {
+    		eventid: param('id'),
+    		name:  $("#iName").val(),
+    		storeprice: $("#iPrice").val(),
+    		description: $("#iDescription").val()
+    	};
+    	console.log(item);
+    	$.ajax({
+	        type: 'POST',
+	        url: '../../server/item/',
+	        dataType: 'JSON',
+	        data:item,
+	        headers: {
+		    "Authorization": "Bearer " + access_token
+		  	},
+	        success: function(json) {
+	            if(json.success != false) {
+	            	$('#success').modal("show");
+	            	getItems();
+	            	setTimeout(function(){
+					   window.location.reload(1);
+					}, 3000);
+	            }
+	            else {
+	            	$('#fail').modal("show");
+	            }
+	        },
+	        error: function() {
+	        	$('#fail').modal("show");
+	        }
+	    });
     }
 
     function param(name) {
