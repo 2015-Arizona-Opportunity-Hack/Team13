@@ -17,7 +17,7 @@ $app->group('/ticket', function() use($app, $authorize, $resourceServer) {
 		echo $json;
 	});
 
-	$app->get('/event/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+	$app->get('/event/:eventid/', function($eventid) use ($app, $resourceServer) {
 		$ticket = new Ticket();
 
 		$json = $ticket->getTickets($eventid);
