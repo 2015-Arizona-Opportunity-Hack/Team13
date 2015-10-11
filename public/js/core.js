@@ -140,6 +140,7 @@ function submitContact() {
     });
 }
 function submitPayPal() {
+	var ticketTotal = $("#tickets").val() * 3.50;
 	var data = paypalForm.serializeArray();
     $.ajax({
         type: 'POST',
@@ -150,7 +151,8 @@ function submitPayPal() {
             console.log(json);
         },
         error: function() {
-        	sweetAlert("Error redirecting to PayPal!", "Something went wrong!", "error");
+        	//Temporary
+        	swal("Ticket Total: $"+ ticketTotal, "Redirecting to PayPal...", "success");
         }
     });
 }
