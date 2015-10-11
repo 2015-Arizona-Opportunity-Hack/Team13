@@ -23,6 +23,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -236,7 +237,7 @@
         <div class="row">
         <div class="container">
       <div id="contact_form" class="row">
-        <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
           <h2>Contact Us</h2>
           <form role="form" id="feedbackForm" data-toggle="validator" data-disable="false">
             <div class="form-group">
@@ -281,7 +282,7 @@
               <label class="control-label" for="message">Message *</label>
               <div class="input-group">
                 <textarea rows="5" cols="30" class="form-control" id="message" data-validation="required length" data-validation-length="max999" name="message" placeholder="Enter your message" required></textarea>
-                <span class="input-group-addon"><!--<i class="glyphicon glyphicon-unchecked form-control-feedback">--></i></span>
+                <span class="input-group-addon"><i class="fa fa-pencil-square-o bigicon"></i></span>
               </div>
               <span class="help-block" style="display: none;">Please enter a message.</span>
             </div>
@@ -290,7 +291,7 @@
               <span class="help-block" style="display: none;">Please check that you are not a robot.</span>
             </div>
             <span class="help-block" style="display: none;">Please enter a the security code.</span>
-            <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" data-loading-text="Sending..." style="display: block; margin-top: 10px;">Send Feedback</button>
+            <button type="submit" id="feedbackSubmit" class="btn-circle-contact center-block" data-loading-text="Sending..." style="display: block; margin-top: 10px;">Send Feedback</button>
           </form>
         </div><!--/span-->
       </div><!--/row-->
@@ -326,6 +327,9 @@
 
     <!-- Validator -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="js/sweetalert.min.js"></script> 
 
 </body>
 

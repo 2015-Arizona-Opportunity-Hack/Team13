@@ -23,7 +23,7 @@
 	     *
 	     * @var boolean
 	     */
-	    public $timestamps = false; 
+	    public $timestamps = false;
 
 		protected $database;
 		

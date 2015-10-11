@@ -81,20 +81,12 @@ function submitContact() {
         url: 'Contact API',
         data: data,
         dataType: 'JSON',
-       rules: {
-    field: {
-      required: true,
-      email: true
-    }
-  },
         success: function(json) {
             console.log(json);
             if(json.success == true) {
-                //$('#success').modal('show');
-                //window.location = "medicationauthorize.php?pet=" + json.petid + '&name=' + json.name;
-                //console.log("medicationauthorize.php?pet=" + json.petid + '&name=' + json.name);
+            	swal("Feedback submitted", "We will contact you shortly!", "success");
             } else {
-                //$('#fail').modal('show');
+                sweetAlert("Feedback not sent!", "Something went wrong!", "error");
             }
         }
     });
@@ -106,5 +98,4 @@ $.validate({
         return false; // Will stop the submission of the form
     }
  });
-
 });

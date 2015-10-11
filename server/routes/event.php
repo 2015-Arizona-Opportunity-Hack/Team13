@@ -4,7 +4,6 @@
 	use Lib\OAuth2\OAuth2;
 
 	$app->group('/event', function() use($app, $authorize, $resourceServer) {
-
 		$app->post('/', $authorize(), function() use ($app, $resourceServer) { 
 			$event = new event();
 
