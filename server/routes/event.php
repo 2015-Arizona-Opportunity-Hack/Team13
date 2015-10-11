@@ -5,7 +5,7 @@
 
 	$app->group('/event', $authorize, function() use($app, $resourceServer) {
 
-		$app->post('/', function() use ($app, $authorize, $resourceServer) { 
+		$app->post('/', function() use ($app, $resourceServer) { 
 			$event = new event();
 
 			$hostid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
