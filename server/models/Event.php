@@ -48,7 +48,7 @@
 			$event->ticketprice = $ticketprice;
 			$event->description = $description;
 
-			$save = $event->save();
+			$saved = $event->save();
 
 			if($saved) {
 				$array = array('success' => true,
@@ -64,12 +64,32 @@
 		}
 
 		//check to make sure the host editing the event is the actual owner//
-		public function verifyHost($eventid) {
+		public function verifyHost($eventid, $userid) {
 			$event = Event::where('id', $eventid)->first();
-			if ($resourceServer->getAccessToken()->getSession()->getOwnerId() == $event->hostid) {
+			$hostid = $event->hostid;
+			if ($userid === $hostid) {
 				return true;
 			}
 			return false;
+		}
+
+		public function getEvent($eventid) {
+			$event = Event::where('id', $eventid)->first();
+			if($event != null) {
+				return $event;
+			}
+			else {
+				echo "EVENT NOT FOUND!";
+			}
+		}
+
+		public function getHostEvents($hostid) {
+			$events = Event::where('hostid', $hostid)->get();
+
+			$array = array('success' => true,
+					'events' => $events);
+
+			return json_encode($array);
 		}
 
 	}

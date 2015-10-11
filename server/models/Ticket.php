@@ -5,14 +5,14 @@ namespace Models;
 use Lib\Database;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Participant extends Eloquent {
+class Ticket extends Eloquent {
 
 	/**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'participants';
+    protected $table = 'tickets';
     /**
      * The database table primary key used by the model.
      *
@@ -32,19 +32,27 @@ class Participant extends Eloquent {
 		$this->database = Database::getInstance();
 	}
 
-	public function addParticipant($eventid, $name, $email, $phone, $orderid) {
-		$participant = new Participant();
-		$participant->eventid = $eventid;
-		$participant->name = $name;
-		$participant->email = $email;
-		$participant->phone = $phone;
-		$participant->orderid = $orderid;
+	public function addTicket($participantid, $eventid, $orderid) {
 
-		$saved = $participant->save();
+		$characters = '0123456789';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < 10; $i++) {
+	        $randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+
+
+		$ticket = new Ticket();
+		$ticket->participantid = $participantid;
+		$ticket->eventid = $eventid;
+		$ticket->orderid = $orderid;
+		$ticket->confirmation = $randomString;
+
+		$saved = $ticket->save();
 
 		if($saved) {
 			$array = array('success' => true,
-				'participant' => $participant);
+				'ticket' => $ticket);
 
 			return json_encode($array);
 		} else {
@@ -56,22 +64,22 @@ class Participant extends Eloquent {
 
 	}
 
-	public function getParticipants($eventid) {
-		$participant = Participant::where('eventid', $eventid)->get();
+	public function getTickets($eventid) {
+		$tickets = Ticket::where('eventid', $eventid)->get();
 
-		if($participant === null) {
+		if($tickets === null) {
 			$array = array('success' => false,
-				'message' => 'No participants found');
+				'message' => 'No tickets found for this event');
 
 			return json_encode($array);
 		}
 
 		$array = array('success' => true,
-				'participant' => $participant);
+				'tickets' => $tickets);
 
-			return json_encode($array);
-
+		return json_encode($array);
 	}
+
 
 	
 }

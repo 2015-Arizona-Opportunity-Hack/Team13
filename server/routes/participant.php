@@ -19,6 +19,14 @@ $app->group('/participant', function() use($app, $authorize, $resourceServer) {
 		echo $json;
 	});
 
+	$app->get('/participants/event/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+		$participant = new Participant();
+
+		$json = $participant->getParticipants($eventid);
+
+		echo $json;
+	});
+
 
 });
 
