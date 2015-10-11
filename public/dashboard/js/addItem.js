@@ -1,9 +1,8 @@
 $(function() {
-	//token = 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt';
+	access_token = $.cookie("token");
 
 	getName();
     getEvents();
-
     getItems();
 
     $.validate({
@@ -17,7 +16,7 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/host',
+	        url: '../../server/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -38,7 +37,7 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/event/host',
+	        url: '../../server/event/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -58,7 +57,7 @@ $(function() {
     function getItems() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/item/' + param('id'),
+	        url: '../../server/item/event/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -76,22 +75,28 @@ $(function() {
 	            		viewItem(id);
 	            	});
 	            }
+	        },
+	        error: function(json) {
+	        	console.log(json);
+	        	alert("FAIL!!!!!");
 	        }
+
 	    });
     }
 
     function viewItem(id) {
-    	$('#viewitem').modal('show');
     	$.ajax({
 	        type: 'GET',
-	        url: 'http://localhost/Team13/server/item/' + param('id'),
+	        url: '../../server/item/' + id,
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
-	        	console.log(json);
 	            if(json.success != false) {
+	            	$('#itemName').val(json.name);
+	            	$('#itemDescription').val(json.description);
+	            	$('#itemPrice').val(json.storeprice);
 	            	$('#viewitem').modal('show');
 	            }
 	        }
