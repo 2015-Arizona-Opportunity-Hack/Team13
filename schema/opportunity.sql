@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 10, 2015 at 10:54 PM
+-- Generation Time: Oct 11, 2015 at 01:11 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.13
 
@@ -44,15 +44,20 @@ CREATE TABLE IF NOT EXISTS `events` (
   `isvirtual` tinyint(1) DEFAULT NULL,
   `ticketprice` decimal(9,2) DEFAULT NULL,
   `description` text
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `hostid`, `name`, `startdate`, `enddate`, `addr1`, `addr2`, `city`, `state`, `zip`, `islocal`, `isvirtual`, `ticketprice`, `description`) VALUES
-(1, 3, 'Hackathon Rafle', '2015-10-10', '2015-10-11', '1122 east cool drive', NULL, 'tempe', 'az', 85282, 1, 1, '5.00', 'An raffle to raise money for future hackathons'),
-(2, 3, 'Test event', '2015-10-10', '2015-10-11', '1111 e awesome dr', '', 'tempe', 'az', 85282, 0, 0, '100.00', 'raffle event description');
+(1, 3, 'Hackathon Raffle', '2015-10-10', '2015-10-11', '1122 east cool drive', NULL, 'tempe', 'az', 85282, 1, 1, '5.00', 'An raffle to raise money for future hackathons'),
+(2, 3, 'Diamond Backs Game Raffle', '2015-10-10', '2015-10-11', '1111 e awesome dr', '', 'tempe', 'az', 85282, 0, 0, '100.00', 'raffle event description'),
+(3, 3, 'American Association of Cancer Raffle ', NULL, NULL, '1905 E. Greenway Dr.', '', 'Tempe', 'Arizona', 85282, NULL, NULL, '100.00', 'Raise money'),
+(4, 3, 'Soccer team raffle', NULL, NULL, '1905 E. Greenway Dr.', '', 'Tempe', 'Arizona', 85282, NULL, NULL, '200.00', 'A raffle to raise money for soccer game'),
+(5, 3, 'Baseball team raffle', NULL, NULL, '2148 S. 90th Glen', '', 'Tolleson', 'Arizona', 85353, NULL, NULL, '200.00', 'A raffle to raise money for  baseball game'),
+(6, 3, 'College fund raffle', NULL, NULL, '1905 E. Greenway Dr.', '', 'Tempe', 'Arizona', 85282, NULL, NULL, '100.00', 'A raffle to earn money for college fund'),
+(7, 3, 'Raffle name', NULL, NULL, '619 buckners ln', '', 'Mineral', 'Arizona', 89789, NULL, NULL, '10.00', 'Raffle description');
 
 -- --------------------------------------------------------
 
@@ -92,7 +97,17 @@ CREATE TABLE IF NOT EXISTS `items` (
   `description` text,
   `pathtopic` varchar(255) DEFAULT NULL,
   `storeprice` decimal(9,2) DEFAULT '0.00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `eventid`, `name`, `description`, `pathtopic`, `storeprice`) VALUES
+(1, 1, 'Macbook Pro', 'macbook pros are cool', 'http://store.storeimages.cdn-apple.com/4735/as-images.apple.com/is/image/AppleInc/aos/published/images/M/AC/MACBOOKPRO/MACBOOKPRO?wid=1200&hei=630&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1425922618098', '100.00'),
+(2, 1, 'iPhone', 'an iphone 6s', 'http://cdn0.vox-cdn.com/uploads/chorus_asset/file/798874/DSCF1913.0.jpg', '100.00'),
+(3, 1, 'Car', 'Car description', 'http://media.caranddriver.com/images/media/51/dissected-lotus-based-infiniti-emerg-e-sports-car-concept-top-image-photo-451994-s-original.jpg', '100.00'),
+(12, 1, 'House', 'A house for raffle', 'http://o.homedsgn.com/wp-content/uploads/2013/02/a-house-19-800x548.jpg', '100000.00');
 
 -- --------------------------------------------------------
 
@@ -112,12 +127,23 @@ CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`access_token`, `session_id`, `expire_time`) VALUES
+('1H6u9vkAPATHTKqbI6p3SeJRzYo8zdLR3mJvVirM', 9, 1475280000),
+('2z5gyXVVb3xdmpPfAwwoCC9urfN6pexY6FWdJPeK', 12, 1475280000),
 ('CROSvU6BfhnmyO49zJ3FDMEvy5usDEdaOvHdg45V', 4, 1475280000),
+('DijSDlZEuVgJB4wy0UjN04zdhPravvcUcTIcoqsf', 10, 1475280000),
 ('iamalex', 2, 1444602834),
 ('iamgod', 1, 1444602834),
 ('iamphil', 3, 1444602834),
+('N7dBzwqn4FF1eRcFLiCz6FE93VZxQZqH7kjEgpHO', 13, 1475280000),
+('NSDHPgCn7seOwRx1vIUOVnBKSxVZl17gtQBtnMuc', 15, 1475280000),
+('PxBipEEk17jJpNd4HAqSsPlkpxnAVJvati2LV0Z0', 11, 1475280000),
+('Q4CnRHPNeySVwnlOuznWs6QSP8bTgadSCtBYPVok', 17, 1475280000),
+('QtBT98yWP4SN19RuVHeqIVYmFVXDKqdypXeDdg1j', 16, 1475280000),
+('Uth69WJU1eSPBsMFSy9U5QTptpKYlbmdoeh5yInl', 8, 1475280000),
+('uxSIBJUWMxgxi2I4NNKzdGR93AyM6HLFeDxqmkD0', 14, 1475280000),
 ('VFp4B8Cf4aya1Yu64jcL5HzT2QhL5bDVlX3K7thw', 6, 1475280000),
-('xjflBEuw1z58epNdZX7wKcgP1YwBdz6It4UNaZip', 5, 1475280000);
+('xjflBEuw1z58epNdZX7wKcgP1YwBdz6It4UNaZip', 5, 1475280000),
+('zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt', 7, 1475280000);
 
 -- --------------------------------------------------------
 
@@ -228,9 +254,20 @@ CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
 --
 
 INSERT INTO `oauth_refresh_tokens` (`refresh_token`, `expire_time`, `access_token`) VALUES
+('3zdP5yHuBe0VHkXBkWvd6ULuSrwKKLtzzQQgAOv4', 1445166725, 'DijSDlZEuVgJB4wy0UjN04zdhPravvcUcTIcoqsf'),
+('cXDHKq0c9WdmY9bjOjPWm2oH9vvUIhHaVdy2WLiY', 1445141591, 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt'),
+('E9KbxzulCdpeFMnIZj55Vc9YoRGAAWD4si2jtNr7', 1445170430, 'PxBipEEk17jJpNd4HAqSsPlkpxnAVJvati2LV0Z0'),
+('FvlNN6FthivxMJhFfM2veBK3mcjX5SmEJIuZvh4x', 1445177809, 'N7dBzwqn4FF1eRcFLiCz6FE93VZxQZqH7kjEgpHO'),
+('gltvT4RgIPtwmAu4g6iseM2uS0rfuteZaLmTJnXO', 1445178349, 'Q4CnRHPNeySVwnlOuznWs6QSP8bTgadSCtBYPVok'),
 ('hzLs7fboIS0UqFvcg8loKO6aXKkJMT2x2Zs2fLuw', 1445124589, 'xjflBEuw1z58epNdZX7wKcgP1YwBdz6It4UNaZip'),
 ('n3XUlVDSLgCpk8jSoalqrFk1c8bPQW1Nhour2EI5', 1445124674, 'VFp4B8Cf4aya1Yu64jcL5HzT2QhL5bDVlX3K7thw'),
-('sw5vuSa2orlLnWyloLVqS13ElVvOkyF0NU7Qrpoj', 1445122911, 'CROSvU6BfhnmyO49zJ3FDMEvy5usDEdaOvHdg45V');
+('oIFdPBlfiFG87mZoK1esycSq7N10B8kokQ1F1wIr', 1445178237, 'QtBT98yWP4SN19RuVHeqIVYmFVXDKqdypXeDdg1j'),
+('OYThKi4AkgFBDdQo8ypVZyitAnPezAP67vYllKiH', 1445177849, 'uxSIBJUWMxgxi2I4NNKzdGR93AyM6HLFeDxqmkD0'),
+('sjG93Cgo3QYJPCaGby35UUj3wBKQCmwKMXQjM8b2', 1445145778, 'Uth69WJU1eSPBsMFSy9U5QTptpKYlbmdoeh5yInl'),
+('sw5vuSa2orlLnWyloLVqS13ElVvOkyF0NU7Qrpoj', 1445122911, 'CROSvU6BfhnmyO49zJ3FDMEvy5usDEdaOvHdg45V'),
+('Tt4TjKH9SZXvZy5nEGG9kvPgYbUylLA6L81o4Ej2', 1445177526, '2z5gyXVVb3xdmpPfAwwoCC9urfN6pexY6FWdJPeK'),
+('z8p7YoJgaj7Vl7EzMmZsCbYwTLRUfPyCSVz5BSw1', 1445177867, 'NSDHPgCn7seOwRx1vIUOVnBKSxVZl17gtQBtnMuc'),
+('ziSFPriWo9AEPDvAzzLO96Vp7rFn8jtIPIcbKoSB', 1445145953, '1H6u9vkAPATHTKqbI6p3SeJRzYo8zdLR3mJvVirM');
 
 -- --------------------------------------------------------
 
@@ -266,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `oauth_sessions` (
   `owner_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `client_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `client_redirect_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `oauth_sessions`
@@ -278,7 +315,18 @@ INSERT INTO `oauth_sessions` (`id`, `owner_type`, `owner_id`, `client_id`, `clie
 (3, 'user', '2', 'testclient', NULL),
 (4, 'user', '1', 'testclient', NULL),
 (5, 'user', '3', 'testclient', NULL),
-(6, 'user', '3', 'testclient', NULL);
+(6, 'user', '3', 'testclient', NULL),
+(7, 'user', '3', 'testclient', NULL),
+(8, 'user', '3', 'testclient', NULL),
+(9, 'user', '3', 'testclient', NULL),
+(10, 'user', '3', 'testclient', NULL),
+(11, 'user', '3', 'testclient', NULL),
+(12, 'user', '3', 'testclient', NULL),
+(13, 'user', '3', 'testclient', NULL),
+(14, 'user', '3', 'testclient', NULL),
+(15, 'user', '3', 'testclient', NULL),
+(16, 'user', '3', 'testclient', NULL),
+(17, 'user', '3', 'testclient', NULL);
 
 -- --------------------------------------------------------
 
@@ -328,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `participants` (
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `participants`
@@ -336,7 +384,12 @@ CREATE TABLE IF NOT EXISTS `participants` (
 
 INSERT INTO `participants` (`id`, `eventid`, `name`, `email`, `phone`, `orderid`) VALUES
 (2, 1, 'Jacob Parra', 'jacob@gmail.com', '6232226677', 1),
-(3, 1, 'Armand', 'armand@gmail.com', '6232226677', 1);
+(3, 1, 'Armand', 'armand@gmail.com', '6232226677', 1),
+(4, 1, 'Omar Reyes', 'omar@gmail.xom', '1112226666', 1),
+(5, 1, 'Carlos Reyes', 'carlos@gmail.com', '8882229929', 1),
+(6, 1, 'Lucy Reyes', 'lucy@gmail.com', '9182941828', 1),
+(7, 1, 'Bob guys', 'bob@gmail.com', '9228872878', 1),
+(8, 1, 'Lola Keys', 'lola@gmail.com', '9281838288', 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `eventid` int(11) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL,
   `confirmation` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tickets`
@@ -359,7 +412,8 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 
 INSERT INTO `tickets` (`id`, `participantid`, `eventid`, `orderid`, `confirmation`) VALUES
 (2, 2, 1, 1, 'TUUtcKQTZu'),
-(3, 2, 1, 1, '0480392325');
+(3, 2, 1, 1, '0480392325'),
+(4, 2, 1, 1, '8203244902');
 
 -- --------------------------------------------------------
 
@@ -372,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `winners` (
   `id` int(11) NOT NULL,
   `itemid` int(11) DEFAULT NULL,
   `participantid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -514,7 +568,7 @@ ALTER TABLE `winners`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `hosts`
 --
@@ -524,7 +578,7 @@ ALTER TABLE `hosts`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `oauth_access_token_scopes`
 --
@@ -544,7 +598,7 @@ ALTER TABLE `oauth_client_redirect_uris`
 -- AUTO_INCREMENT for table `oauth_sessions`
 --
 ALTER TABLE `oauth_sessions`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `oauth_session_scopes`
 --
@@ -559,17 +613,17 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `winners`
 --
 ALTER TABLE `winners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- Constraints for dumped tables
 --
