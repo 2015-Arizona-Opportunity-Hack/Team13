@@ -57,7 +57,6 @@
 				$ticket = new Ticket();
 				$ticketDecode = json_decode($ticket->getTickets($item->eventid),true);
 				$tickets = $ticketDecode['tickets'];
-				//print_r ($tickets);
 				$event = new Event();
 				$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
 				if ($event->verifyHost($item->eventid, $userid)) {
@@ -79,6 +78,13 @@
 			else {
 				echo "NO ITEM FOUND!";
 			}	
+		});
+
+		$app->get('/winner/:itemid', $authorize($itemid), function() use ($app, $resourceServer) {
+			$winner = new Winner();
+			$json = $winner->lookupWinner($itemid);
+
+			echo $json;
 		});
 
 	});
