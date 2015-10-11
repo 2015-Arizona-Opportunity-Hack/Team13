@@ -30,7 +30,7 @@
 			$this->database = Database::getInstance();
 		}
 		//add new order//
-		public function addOrder($ordernumber, $ticketquantity, $participantid) {
+		public function addOrder($ordernumber, $ticketquantity) {
 			$order = new Order();
 			$order->ordernumber = $ordernumber;
 			$order->ticketquantity = $ticketquantity;
@@ -38,11 +38,6 @@
 			$saved = $order->save();
 			//verify insertion//
 			if($saved) {
-				$ticket = new Ticket();
-				//add tickets for the order//
-				for (i = 0; i < ticketquantity; i++) {
-						$ticket->addTicket($participantid, $eventid, $orderid);
-					}
 				$array = array('success' => true,
 					'order' => $order);
 				return json_encode($array);

@@ -7,10 +7,11 @@
 		//create order//
 		$app->post('/', $authorize(), function() use ($app, $resourceServer) {
 			$order = new order();
-			$ordernumber = $app->request->post('ordernumber');
+			$ordernumber = mt_rand(); //would be the paypal ordernumber, when actual transactions are processed//
 			$ticketquantity = $app->request->post('ticketquantity');
+			$participantid = $app->request->post('participantid');
 			//perform insertion//
-			$json = $order->addOrder($ordernumber, $ticketquantity);
+			$json = $order->addOrder($ordernumber, $ticketquantity, $participantid);
 			echo $json;
 		});
 		//get specific order//
