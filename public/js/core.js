@@ -154,7 +154,7 @@ function login() {
 			//token = json.access_token;
 			$.cookie('token', json.access_token);
 			console.log($.cookie('token'));
-			window.location.href = "dashboard";
+			window.location.href = "dashboard/index.php";
 		},
 		error: function() {
 			sweetAlert("Invalid Username or Password", "Please try again.", "error");

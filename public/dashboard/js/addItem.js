@@ -16,7 +16,7 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/host',
+	        url: '../server/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -37,7 +37,7 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/event/host',
+	        url: '../server/event/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -57,7 +57,7 @@ $(function() {
     function getItems() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/item/event/' + param('id'),
+	        url: '../server/item/event/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -93,7 +93,7 @@ $(function() {
     		console.log($(this));
     		$.ajax({
 		        type: 'GET',
-		        url: '../../server/item/winner/' + $(this)[0].id,
+		        url: '../server/item/winner/' + $(this)[0].id,
 		        dataType: 'JSON',
 		        headers: {
 			    "Authorization": "Bearer " + access_token
@@ -117,7 +117,7 @@ $(function() {
     function viewItem(id) {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/item/' + id,
+	        url: '../server/item/' + id,
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -144,7 +144,7 @@ $(function() {
     	console.log(item);
     	$.ajax({
 	        type: 'POST',
-	        url: '../../server/item/',
+	        url: '../server/item/',
 	        dataType: 'JSON',
 	        data:item,
 	        headers: {

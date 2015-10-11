@@ -15,7 +15,7 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/index.php/host',
+	        url: '../server/index.php/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -36,7 +36,7 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/index.php/event/host',
+	        url: '../server/index.php/event/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -61,7 +61,7 @@ $(function() {
 
     	$.ajax({
 	        type: 'POST',
-	        url: '../../server/index.php/event/',
+	        url: '../server/index.php/event/',
 	        data: data,
 	        dataType: 'JSON',
 	        headers: {
