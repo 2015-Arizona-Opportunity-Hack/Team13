@@ -12,7 +12,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
     <link href="css/event.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -31,81 +30,289 @@
 <body>
     <!-- Navigation -->
     <div class="container">
-        <a class="navbar-brand page-scroll title_event btn-block text-center" href="index.html" target="_blank">
-            <i class="fa fa-ticket"></i> Go Raffle Me
-        </a>
+        <div class="row greyback">
+            <div class="col-sm-12">
+                <a class="navbar-brand page-scroll title_event btn-block text-center" href="index.html" target="_blank">
+                    <i class="fa fa-ticket"></i> Go Raffle Me
+                </a>
 
-        <img class="img-responsive CattoBorderRadius" src="img/raffle-tickets4.jpg" />
+               
+</div>
 
-		<div class="btn-block text-center">
+            <div class="col-sm-6">
+            	<div class="col-sm-9">
 
-			<span id="event_name" >Pay Pal Fundraser</span>
-			
-		</div>
-		<div class="btn-block text-center">
-
-			<span id="event_id">0000012123</span>
-			
-		</div>
-
-		<div class="btn-block text-center">
-
-			<h1>Share this event!</h1>
-			<!-- Load Facebook SDK for JavaScript -->
-  
-  <!-- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '842748042510232',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-share-button" data-href="https://github.com/Opportunity-Hack-2015-Arizona/Team13/" data-layout="button_count"></div>-->
-
-<Script Language='Javascript'>
-<!-- HTML Encryption provided by iWEBTOOL.com -->
-<!--
-document.write(unescape('%20%3C%73%63%72%69%70%74%3E%0A%20%20%77%69%6E%64%6F%77%2E%66%62%41%73%79%6E%63%49%6E%69%74%20%3D%20%66%75%6E%63%74%69%6F%6E%28%29%20%7B%0A%20%20%20%20%46%42%2E%69%6E%69%74%28%7B%0A%20%20%20%20%20%20%61%70%70%49%64%20%20%20%20%20%20%3A%20%27%38%34%32%37%34%38%30%34%32%35%31%30%32%33%32%27%2C%0A%20%20%20%20%20%20%78%66%62%6D%6C%20%20%20%20%20%20%3A%20%74%72%75%65%2C%0A%20%20%20%20%20%20%76%65%72%73%69%6F%6E%20%20%20%20%3A%20%27%76%32%2E%35%27%0A%20%20%20%20%7D%29%3B%0A%20%20%7D%3B%0A%0A%20%20%28%66%75%6E%63%74%69%6F%6E%28%64%2C%20%73%2C%20%69%64%29%7B%0A%20%20%20%20%20%76%61%72%20%6A%73%2C%20%66%6A%73%20%3D%20%64%2E%67%65%74%45%6C%65%6D%65%6E%74%73%42%79%54%61%67%4E%61%6D%65%28%73%29%5B%30%5D%3B%0A%20%20%20%20%20%69%66%20%28%64%2E%67%65%74%45%6C%65%6D%65%6E%74%42%79%49%64%28%69%64%29%29%20%7B%72%65%74%75%72%6E%3B%7D%0A%20%20%20%20%20%6A%73%20%3D%20%64%2E%63%72%65%61%74%65%45%6C%65%6D%65%6E%74%28%73%29%3B%20%6A%73%2E%69%64%20%3D%20%69%64%3B%0A%20%20%20%20%20%6A%73%2E%73%72%63%20%3D%20%22%2F%2F%63%6F%6E%6E%65%63%74%2E%66%61%63%65%62%6F%6F%6B%2E%6E%65%74%2F%65%6E%5F%55%53%2F%73%64%6B%2E%6A%73%22%3B%0A%20%20%20%20%20%66%6A%73%2E%70%61%72%65%6E%74%4E%6F%64%65%2E%69%6E%73%65%72%74%42%65%66%6F%72%65%28%6A%73%2C%20%66%6A%73%29%3B%0A%20%20%20%7D%28%64%6F%63%75%6D%65%6E%74%2C%20%27%73%63%72%69%70%74%27%2C%20%27%66%61%63%65%62%6F%6F%6B%2D%6A%73%73%64%6B%27%29%29%3B%0A%3C%2F%73%63%72%69%70%74%3E%0A%0A%3C%64%69%76%20%63%6C%61%73%73%3D%22%66%62%2D%73%68%61%72%65%2D%62%75%74%74%6F%6E%22%20%64%61%74%61%2D%68%72%65%66%3D%22%68%74%74%70%73%3A%2F%2F%67%69%74%68%75%62%2E%63%6F%6D%2F%4F%70%70%6F%72%74%75%6E%69%74%79%2D%48%61%63%6B%2D%32%30%31%35%2D%41%72%69%7A%6F%6E%61%2F%54%65%61%6D%31%33%2F%22%20%64%61%74%61%2D%6C%61%79%6F%75%74%3D%22%62%75%74%74%6F%6E%5F%63%6F%75%6E%74%22%3E%3C%2F%64%69%76%3E'));
-//-->
-</Script>
-			
-		</div>
+                <img class="img-responsive CattoBorderRadius" src="img/raffle-tickets4.jpg" />
+            </div>
+        </div>
+    
+                
 
 
+ <div class="col-sm-3">
+ 	<br>
+ 	<br>
+ 	<br>
+                <div class="btn-block text-center">
+                    <span id="event_name"><h2>Pay Pal Fundraser</h2></span>
+                </div>
+                <div class="btn-block text-center">
+                	<span id="event_id"><h2>0000012123</h2></span>
+                    
+                </div>
+                <div class="btn-block text-center">
+                    <h4>Share this event!</h4>
+                    <!-- Load Facebook SDK for JavaScript -->
+                    <!-- <script>
+					  window.fbAsyncInit = function() {
+					    FB.init({
+					      appId      : '842748042510232',
+					      xfbml      : true,
+					      version    : 'v2.5'
+					    });
+					  };
+
+					  (function(d, s, id){
+					     var js, fjs = d.getElementsByTagName(s)[0];
+					     if (d.getElementById(id)) {return;}
+					     js = d.createElement(s); js.id = id;
+					     js.src = "//connect.facebook.net/en_US/sdk.js";
+					     fjs.parentNode.insertBefore(js, fjs);
+					   }(document, 'script', 'facebook-jssdk'));
+					</script>
+
+					<div class="fb-share-button" data-href="https://github.com/Opportunity-Hack-2015-Arizona/Team13/" data-layout="button_count"></div>-->
+                    <Script Language='Javascript'>
+                    <!-- HTML Encryption provided by iWEBTOOL.com -->
+                    <!--
+                    document.write(unescape('%20%3C%73%63%72%69%70%74%3E%0A%20%20%77%69%6E%64%6F%77%2E%66%62%41%73%79%6E%63%49%6E%69%74%20%3D%20%66%75%6E%63%74%69%6F%6E%28%29%20%7B%0A%20%20%20%20%46%42%2E%69%6E%69%74%28%7B%0A%20%20%20%20%20%20%61%70%70%49%64%20%20%20%20%20%20%3A%20%27%38%34%32%37%34%38%30%34%32%35%31%30%32%33%32%27%2C%0A%20%20%20%20%20%20%78%66%62%6D%6C%20%20%20%20%20%20%3A%20%74%72%75%65%2C%0A%20%20%20%20%20%20%76%65%72%73%69%6F%6E%20%20%20%20%3A%20%27%76%32%2E%35%27%0A%20%20%20%20%7D%29%3B%0A%20%20%7D%3B%0A%0A%20%20%28%66%75%6E%63%74%69%6F%6E%28%64%2C%20%73%2C%20%69%64%29%7B%0A%20%20%20%20%20%76%61%72%20%6A%73%2C%20%66%6A%73%20%3D%20%64%2E%67%65%74%45%6C%65%6D%65%6E%74%73%42%79%54%61%67%4E%61%6D%65%28%73%29%5B%30%5D%3B%0A%20%20%20%20%20%69%66%20%28%64%2E%67%65%74%45%6C%65%6D%65%6E%74%42%79%49%64%28%69%64%29%29%20%7B%72%65%74%75%72%6E%3B%7D%0A%20%20%20%20%20%6A%73%20%3D%20%64%2E%63%72%65%61%74%65%45%6C%65%6D%65%6E%74%28%73%29%3B%20%6A%73%2E%69%64%20%3D%20%69%64%3B%0A%20%20%20%20%20%6A%73%2E%73%72%63%20%3D%20%22%2F%2F%63%6F%6E%6E%65%63%74%2E%66%61%63%65%62%6F%6F%6B%2E%6E%65%74%2F%65%6E%5F%55%53%2F%73%64%6B%2E%6A%73%22%3B%0A%20%20%20%20%20%66%6A%73%2E%70%61%72%65%6E%74%4E%6F%64%65%2E%69%6E%73%65%72%74%42%65%66%6F%72%65%28%6A%73%2C%20%66%6A%73%29%3B%0A%20%20%20%7D%28%64%6F%63%75%6D%65%6E%74%2C%20%27%73%63%72%69%70%74%27%2C%20%27%66%61%63%65%62%6F%6F%6B%2D%6A%73%73%64%6B%27%29%29%3B%0A%3C%2F%73%63%72%69%70%74%3E%0A%0A%3C%64%69%76%20%63%6C%61%73%73%3D%22%66%62%2D%73%68%61%72%65%2D%62%75%74%74%6F%6E%22%20%64%61%74%61%2D%68%72%65%66%3D%22%68%74%74%70%73%3A%2F%2F%67%69%74%68%75%62%2E%63%6F%6D%2F%4F%70%70%6F%72%74%75%6E%69%74%79%2D%48%61%63%6B%2D%32%30%31%35%2D%41%72%69%7A%6F%6E%61%2F%54%65%61%6D%31%33%2F%22%20%64%61%74%61%2D%6C%61%79%6F%75%74%3D%22%62%75%74%74%6F%6E%5F%63%6F%75%6E%74%22%3E%3C%2F%64%69%76%3E'));
+                    //-->
+                    </Script>
+                    <br>
+                    <br>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/Opportunity-Hack-2015-Arizona/Team13/" data-text="Join me in this raffle!">
+Tweet
+</a>
+                    <script>
+                    ! function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                            p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');
+                    </script>
+                </div>
+            </div>
+            
+        
+        </div>
+
+        <hr>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+            	<div class="col-sm-9">
+                <section id="contact">
+                    <h2 class="black">User Info</h2>
+                    <form role="form" id="feedbackform" data-toggle="validator" data-disable="false">
+                        <div class="form-group">
+                            <label class="control-label" for="name">Name *</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="name" name="name" data-validation="required length" data-validation-length="max100" name="name" placeholder="Enter your name" required/>
+                                <span class="input-group-addon"><i class="fa fa-user bigicon"></i></span>
+                            </div>
+                            <span class="help-block" style="display: none;">Please enter your name.</span>
+                        </div>
+                        <!-- UNCOMMENT HERE IF YOU WANT TITLE, COMPANY, WEBSITE OR PHONE FIELDS - you must also uncomment values in $fields_req in sendmail.php
+            <div class="form-group">
+              <label class="control-label" for="title">Title</label>
+              <input type="text" class="form-control optional" id="title" name="title" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="company">Company</label>
+              <input type="text" class="form-control optional" id="company" name="company" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="website">Website</label>
+              <input type="url" class="form-control optional" id="website" name="website" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="phone">Phone</label>
+              <input type="tel" class="form-control optional" id="phone" name="phone" placeholder="Enter your phone (Optional)"/>
+              <span class="help-block" style="display: none;">Please enter a valid phone number.</span>
+            </div>
+            -->
+                        <div class="form-group">
+                            <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email">Email Address *</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email" data-validation="required email" name="email" placeholder="Enter your email" required/>
+                                <span class="input-group-addon"><i class="fa fa-envelope-o bigicon"></i></span>
+                            </div>
+                            <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="phone">Phone Number *</label>
+                            <div class="input-group">
+                                <input input type="text" data-validation="custom" data-validation-regexp="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required/>
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                            </div>
+                            <span class="help-block" style="display: none;">Please enter a valid phone number.</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                            <span class="help-block" style="display: none;">Please check that you are not a robot.</span>
+                        </div>
+                        <span class="help-block" style="display: none;">Please enter a the security code.</span>
+
+						<div class="btn-block text-center">
+                            <p>Price per Raffle Ticket: $<span id="Price">3.50</span></p>
+                        </div>
+
+                        <div class="btn-block text-center">
+                            <span>Please enter tickets wanted:</span>
+                        </div>
+                        <div class="btn-block text-center center-block">
+                            <input type="text" class="form-control smallbox text-center center-block" id="tickets" name="name" data-validation="required length" data-validation-length="max100" name="name" placeholder="1" required/>
+                        </div>
+
+<div class="btn-block text-center center-block">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
 
 
 
+</div>
+
+                        
+                    </form>
+                </section>
+            </div>
+            </div>
+
+
+
+            <div class="col-sm-6">
+                <h1>Raffle Items</h1>
+                <div id="myCarousel" class="carousel slide carousel-height" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="img/raffle-tickets3.jpg" alt="Chania">
+    </div>
+
+    <div class="item">
+      <img src="img/raffle-tickets4.jpg" alt="Chania">
+    </div>
+
+    <div class="item">
+      <img src="img/raffle-tickets6.jpg" alt="Flower">
+    </div>
+
+    
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<hr>
+		<h1>Ongoing Raffle</h1>
+
+		<div id="users">
+  <input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Search by Ticket ID
+  </button>
+
+  <ul class="list">
+    <li>
+      <h3 class="name">Jonny Stromberg</h3>
+      <p class="born">1986</p>
+    </li>
+    <li>
+      <h3 class="name">Jonas Arnklint</h3>
+      <p class="born">1985</p>
+    </li>
+    <li>
+      <h3 class="name">Martina Elm</h3>
+      <p class="born">1986</p>
+    </li>
+    <li>
+      <h3 class="name">Gustaf Lindqvist</h3>
+      <p class="born">1983</p>
+    </li>
+  </ul>
+
+  <hr>
+		<h1>WINNERS!</h1>
+
+		<div id="users">
+			<input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Search by Ticket ID
+  </button>
+
+  <ul class="list">
+	
+
+    <li>
+      <h3 class="name">Jonny Stromberg</h3>
+      <p class="born">1986</p>
+    </li>
+    
+  </ul>
+
+
+            </div>
+        </div>
     </div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    <!-- JS Cookie Popup -->
+    <script src="js/jquery.cookie.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-    <!-- Core.js -->
-    <script src="js/core.js"></script>
     <!-- Validator -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
     <!-- Sweet Alert -->
     <script src="js/sweetalert.min.js"></script>
     <!-- Magnific Popup -->
     <script src="js/jquery.magnific-popup.min.js"></script>
+
+    <script src="js/list.min.js"></script>
+    <!-- Core.js -->
+    <script src="js/core.js"></script>
 </body>
 
 </html>
