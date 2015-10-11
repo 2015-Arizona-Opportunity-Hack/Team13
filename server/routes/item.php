@@ -23,7 +23,11 @@
 				echo $json;
 			}
 			else {
-				echo "WRONG HOST!";
+
+				$array = array('success' => false,
+					'message' => 'Failed to add item');
+
+				echo json_encode($array);	
 			}
 
 		});
@@ -38,7 +42,10 @@
 				echo $json;
 			}
 			else {
-				echo "WRONG HOST!";
+				$array = array('success' => false,
+					'message' => 'Failed to find event');
+
+				echo json_encode($array);	
 			}
 			
 		});
@@ -102,6 +109,6 @@
 
 			echo $json;
 		});
-		// 100 commits (: //
+		
 	});
 ?>

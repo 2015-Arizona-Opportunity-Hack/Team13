@@ -13,7 +13,7 @@
 	     *
 	     * @var string
 	     */
-	    protected $table = 'winner';
+	    protected $table = 'winners';
 	    /**
 	     * The database table primary key used by the model.
 	     *
