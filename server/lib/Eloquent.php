@@ -1,8 +1,10 @@
 <?php
 
+
 namespace Lib;
 
 require_once("Config.php");
+//require_once '../vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Eloquent {
@@ -248,7 +250,7 @@ class Eloquent {
 
 //Uncomment autoload
 //Eloquent::getInstance();
-
+//echo 't';
 
 
 

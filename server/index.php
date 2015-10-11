@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 use League\OAuth2\Server\ResourceServer;
 use League\OAuth2\Server\AuthorizationServer;
 use Lib\Model;
-use Models\Admin\User;
+use Models\Host;
 use Lib\OAuth2\Storage;
 use Lib\OAuth2\OAuth2;
 
@@ -48,8 +48,8 @@ $authorizationServer->addGrantType($passwordGrant);
 
 $passwordGrant->setVerifyCredentialsCallback(function ($username, $password) use ($app) {
     // implement logic here to validate a username and password, return an ID if valid, otherwise return false
-    $user = new User();
-    $valid = $user->oauth2Login($username, $password);   
+    $host = new Host();
+    $valid = $host->oauth2Login($username, $password);   
 
     if($valid !== false)
         return $valid;
@@ -58,8 +58,8 @@ $passwordGrant->setVerifyCredentialsCallback(function ($username, $password) use
 }); 
 
 
-$authorize = function ($scope) use ($resourceServer) {
-    return function () use ($scope, $resourceServer) {
+$authorize = function () use ($resourceServer) {
+    return function () use ($resourceServer) {
 		//401 = Unauthorized
         //403 = Forbidden
 
@@ -70,10 +70,10 @@ $authorize = function ($scope) use ($resourceServer) {
 
         	if($authenticated === false) 
             	$app->halt(401, 'Unauthorized');
-            else {
-            	if (!$resourceServer->getAccessToken()->hasScope($scope)) 
-            		$app->halt(403, 'Forbidden');
-            }
+            //else {
+            	//if (!$resourceServer->getAccessToken()->hasScope($scope)) 
+            		//$app->halt(403, 'Forbidden');
+            //}
         } catch(\League\OAuth2\Server\Exception\OAuthException $e) {
         	$error = json_encode([
 		        'error'     =>  $e->errorType,
@@ -99,11 +99,6 @@ $authorize = function ($scope) use ($resourceServer) {
     };
 };
 
-$app->get('/', function() use ($app) {
-    echo 'Nothing to see here';
-});
-
-
 /*
 grant_type = password
 client_id = testclient
@@ -121,7 +116,7 @@ refresh_token = {refresh token}
 
 This route will be used for logging in by using the password grant_type
 */
-$app->post('/access_token', function() use ($app, $authorizationServer) {
+$app->post('/access_token/', function() use ($app, $authorizationServer) {
     try {
         echo json_encode($authorizationServer->issueAccessToken());
     } catch(\League\OAuth2\Server\Exception\InvalidRefreshException $e) {
@@ -141,6 +136,11 @@ $app->post('/access_token', function() use ($app, $authorizationServer) {
     }
     
 });
+
+$app->get('/', function() use ($app) {
+    echo 'Nothing to see here';
+});
+
 
 $routeFiles = (array) glob('routes/*.php');
 foreach($routeFiles AS $routeFile) {

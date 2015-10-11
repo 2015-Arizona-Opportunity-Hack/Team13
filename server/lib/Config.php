@@ -1,12 +1,12 @@
 <?php
 
 //Database Constants
-defined('DATABASE') ? null : define("DATABASE", "pgsql");
-//defined('DATABASE') ? null : define("DATABASE", "mysql");
+//defined('DATABASE') ? null : define("DATABASE", "pgsql");
+defined('DATABASE') ? null : define("DATABASE", "mysql");
 defined('DB_SERVER') ? null : define("DB_SERVER", "localhost");
-defined('DB_USER') ? null : define("DB_USER", "omarreye_omar");
-defined('DB_PASS') ? null : define("DB_PASS", "omarpack");
-defined('DB_NAME') ? null : define("DB_NAME", "omarreye_PackMinder");
+defined('DB_USER') ? null : define("DB_USER", "root");
+defined('DB_PASS') ? null : define("DB_PASS", "root");
+defined('DB_NAME') ? null : define("DB_NAME", "opportunity");
 
 define('DS', DIRECTORY_SEPARATOR);
 define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
