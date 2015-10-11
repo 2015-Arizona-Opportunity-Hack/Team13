@@ -74,7 +74,8 @@
 					//pick a random ticket//
 					if (sizeof($tickets) > 0) {
 						$numTix = sizeof($tickets);
-						$picked = true;
+						$luckyNum = mt_rand(0,$numTix);
+						$ticket = $tickets[$luckyNum];
 						//more messy json conversions...//
 						$lucky = json_decode($winner->pickWinner($itemid, $ticket['participantid'])); 
 						$luckyWinner = $lucky->winner;
