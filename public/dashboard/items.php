@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Add Item To Event
+            Add Event Item or Choose Event Winner
           </h1>
         </section>
 
@@ -146,7 +146,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="list-group" id="currentitems">
                 <script id="currentitemstemplate" type="x-tmpl-mustache">
                 {{ #items }}
-                <a href="#" id="{{id}}" class="list-group-item">{{name}}</a>
+                <div id="{{id}}">
+                  <a href="#" id="{{id}}" class="list-group-item">{{name}}</a>
+                  Winner: <span name="winnername">To Be Determined</span></br>
+                  Ticket: <span name="ticketnumber">To Be Determined</span></br></br>
+                </div>
                 {{ /items }}
                 </script>
               </div>
@@ -220,7 +224,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div><!-- /.box-body -->
                   
                   <div class="box-footer">
-                    <!--<button type="submit" class="btn btn-info pull-right">Add Event</button>-->
+                   
+                    <button type="submit" class="btn btn-info center-block ">Add Event</button>
+                
                   </div><!-- /.box-footer -->
                 </form>
               </div><!-- /.box -->
@@ -256,7 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div><!-- /.box-body -->
               <div class="box-body">
                 <div class="form-group">
-                  <label for="storeprice" class="col-sm-2 control-label">Store8 Price</label>
+                  <label for="storeprice" class="col-sm-2 control-label">Store Price</label>
                   <div class="col-sm-8">
                     <input id="itemPrice" type="text" class="form-control" name="storeprice" data-validation="required number" data-validation-allowing="float">
                   </div>
@@ -264,6 +270,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div><!-- /.box-body -->
             </div>
             <div class="modal-footer">
+              <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Choose Winner</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
           </div><!-- /.modal-content -->
