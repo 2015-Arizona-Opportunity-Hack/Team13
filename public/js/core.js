@@ -136,7 +136,7 @@ function goToEvent() {
 		url: 'server/index.php/event/id/'+eventId,
 		success: function(json) {
 			console.log(json);
-			if (eventId == json.event.id) {
+			if (json.success == true) {
 				window.location.href = "event.html?id=" + eventId;
 			}
 			else {
