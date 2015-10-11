@@ -53,7 +53,7 @@
 				}
 			}
 			else {
-				echo "ITEM HAS ALREADY BEEN WON!!!";
+				return "ITEM HAS ALREADY BEEN WON!!!";
 			}
 		}
 	}

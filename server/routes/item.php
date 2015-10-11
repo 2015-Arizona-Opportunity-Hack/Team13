@@ -1,6 +1,7 @@
 <?php
 	use Models\Item;
 	use Models\Winner;
+	use Models\Ticket;
 	use Models\Event;
 	use Lib\OAuth2\OAuth2;
 
@@ -51,15 +52,20 @@
 				$tickets = $ticket->getTickets($item->eventid);
 				$event = new Event();
 				$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
-				if ($tickets != null && $event->verifyHost($item->eventid, $userid)) {
-					$numTix = sizeof($tickets);
-					$winningNum = rand(0,$numTix);
-					$ticket = $tickets[$winningNum];
-					$json = $winner->pickWinner($itemid, $ticket->participantid);
-					echo $json;
+				if ($event->verifyHost($item->eventid, $userid)) {
+					if (sizeof($tickets) > 0) {
+						$numTix = sizeof($tickets);
+						$winningNum = rand(0,$numTix);
+						$ticket = $tickets[$winningNum];
+						$json = $winner->pickWinner($itemid, $ticket->participantid);//either ticket or winner is empty....//
+						echo $json;
+					}
+					else {
+						echo "NO TICKETS PURCHASED!!";
+					}
 				}
 				else {
-					echo "NO TICKETS HAVE BEEN PURCHASED!";
+					echo "WRONG HOST";
 				}
 			}
 			else {
