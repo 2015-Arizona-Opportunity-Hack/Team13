@@ -44,18 +44,25 @@
 			echo $json;
 		});
 
-		// $app->post('/notify/', function() use ($app, $resourceServer) {
-		// 	$to = $app->request->post('to');
-		// 	$subject = $app->request->post('subject');
-		// 	$message = $app->request->post('message');
-		// 	$headers = "From: goraffleme@aol.com";
-		// 	if(mail("reyomar80@hotmail.com", $subject, $message)) {
-		// 		echo "MAIL SENT";
-		// 	}
-		// 	else {
-		// 		echo "MAIL FAILED";
-		// 	}
-		// }); HAVIG ISSUES WITH php.ini
+		$app->post('/notify/', function() use ($app, $resourceServer) {
+			$to = $app->request->post('to');
+			$subject = $app->request->post('subject');
+			$message = $app->request->post('message');
+			$headers = "From: goraffleme@aol.com";
+			if(mail($to, $subject, $message)) {
+				$array = array('success' => true,
+				'message' => 'Mail Sent');
+
+				echo json_encode($array);	
+			}
+			else {
+				$array = array('success' => true,
+				'message' => 'MAIL FAILED');
+
+				echo json_encode($array);	
+			}
+		}); 
+
 	});
 
 ?>
