@@ -54,7 +54,7 @@
                         <a class="page-scroll" href="#portfolio">Product</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#footers">Contact</a>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -88,18 +88,17 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">Sign In</div>
-                    <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
                 </div>
                 <div style="padding-top:30px" class="panel-body">
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                     <form id="loginform" class="form-horizontal" role="form" data-toggle="validator" data-disable="false">
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="login-username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" value="" placeholder="username or email">
+                            <input id="login-username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" value="" placeholder="Username or Email">
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" data-validation="required length" data-validation-length="max100" name="password" placeholder="password">
+                            <input id="login-password" type="password" class="form-control" data-validation="required length" data-validation-length="max100" name="password" placeholder="Password">
                         </div>
                         <div class="input-group">
                             <div id="rememberMe">
@@ -111,19 +110,20 @@
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-success">Login</a>
+                                <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-info">Login
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">Don't have an account!
-                                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                    Sign Up Here
-                                </a>
+                            <div class="col-md-12">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:95%;">
+                                    <a href="#" style=" color:#32718F" onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign Up Here</a>
+                                    <br>
+                                    <br>
+                                    <a href="#" style=" color:#32718F">Forgot password?</a>
                                 </div>
                             </div>
                         </div>
-                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                        <button title="Close (Esc)" type="button" class="mfp-close" style="margin-right:10px">×</button>
                     </form>
                 </div>
             </div>
@@ -133,7 +133,6 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">Sign Up</div>
-                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
                 </div>
                 <div class="panel-body">
                     <form id="signupform" class="form-horizontal" role="form">
@@ -167,12 +166,14 @@
                         </div>
                         <div class="form-group">
                             <!-- Button -->
-                            <div class="col-md-offset-4 col-md-9">
-                                <button style="margin-top:20px" id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                                <span style="margin-left:8px;">or</span>
+                            <div class="col-md-12">
+                                <div style="border-top: 0px solid#888; padding-top:5px; font-size:95%">
+                                    <button style="margin-top:20px" id="btn-signup" type="submit" class="btn btn-info">Sign Up</button>
+                                    <button style="margin-top:20px" id="btn-signup" onclick="$('#signupbox').hide(); $('#loginbox').show()" type="submit" class="btn btn-info">Sign In</button>
+                                </div>
                             </div>
                         </div>
-                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                        <button title="Close (Esc)" type="button" class="mfp-close" style="margin-right:10px">×</button>
                     </form>
                 </div>
             </div>
@@ -180,34 +181,37 @@
     </div>
     <!--Participant Form-->
     <div id="participant-form" class="container mfp-hide">
-        <div id="participantbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div id="participantbox" style="margin-top:50px; margin-bottom:10px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
-                <div style="padding-top:30px" class="panel-body">
+                <div class="panel-heading">
+                    <div class="panel-title">Join an Event</div>
+                </div>
+                <div style="padding-top:20px " class="panel-body">
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                     <form id="participantform" class="form-horizontal" role="form" data-toggle="validator" data-disable="false">
-                        <div style="margin-bottom: 25px" class="input-group">
+                        <div style="margin-bottom: 25px; margin-top:10px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="eventId" type="text" class="form-control" data-validation="number" data-validation-length="max100" name="username" value="" placeholder="event id">
+                            <input id="eventId" type="text" class="form-control" data-validation="number" data-validation-length="max100" name="username" value="" placeholder="Event ID">
                         </div>
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
                                 <button type="submit" id="toEvent" id="btn-login" href="#" class="btn btn-success">Go to Event</a>
+                                <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-info">Go to Event</a>
                             </div>
                         </div>
-                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                        <button title="Close (Esc)" type="button" class="mfp-close" style="margin-right:10px; margin-bottom:10px">×</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2 class="black">About Go Raffle Me</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="participant.html">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
                 <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
                 <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
                 <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
