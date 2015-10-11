@@ -13,7 +13,7 @@
 			$pathtopic = $app->request->post('pathtopic');
 			$storeprice = $app->request->post('storeprice');
 			$event = new Event();
-			$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();*/
+			$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
 			if ($event->verifyHost($eventid,$userid)) {
 				$json = $item->addItem($eventid, $name, $description, $pathtopic, $storeprice);
 				echo $json;
