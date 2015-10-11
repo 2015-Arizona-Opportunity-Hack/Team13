@@ -48,13 +48,16 @@
 					return json_encode($array);
 				} else {
 					$array = array('success' => false,
-						'message' => 'Failed to pick winner');
+						'winner' => 'Failed to pick winner');
 
 					return json_encode($array);	
 				}
 			}
 			else {
-				return "ITEM HAS ALREADY BEEN WON!!!";
+				$array = array('success' => false,
+						'winner' => 'Winner already chosen');
+
+				return json_encode($array);	
 			}
 		}
 

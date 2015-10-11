@@ -65,13 +65,22 @@
 						$numTix = sizeof($tickets);
 						$winningNum = rand(0,$numTix);
 						$ticket = $tickets[$winningNum];
-						$luckyWinner = $winner->pickWinner($itemid, $ticket['participantid']);
-						$luckyParticipant = Participant::where('id', $luckyWinner->participantid)->first();
-						
-						$array = array('success' => true,
-						'ticket' => $ticket, 'participant' => $luckyParticipant);
+						$lucky = json_decode($winner->pickWinner($itemid, $ticket['participantid']));
+						$luckyWinner = $lucky->winner;
+						if ($luckyWinner != "Winner already chosen") {
+							$luckyParticipant = Participant::where('id', $luckyWinner->participantid)->first();
+							
+							$array = array('success' => true,
+							'ticket' => $ticket, 'participant' => $luckyParticipant);
 
-						echo json_encode($array);	
+							echo json_encode($array);	
+						}
+						else {
+							$array = array('success' => false,
+							'message' => "Winner already chosen");
+
+							echo json_encode($array);		
+						}
 					}
 					else {
 						echo "NO TICKETS PURCHASED!!";
