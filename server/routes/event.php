@@ -4,12 +4,7 @@
 	use Lib\OAuth2\OAuth2;
 
 	$app->group('/event', function() use($app, $authorize, $resourceServer) {
-
-<<<<<<< HEAD
-		$app->post('/', function() use ($app, $resourceServer) { 
-=======
 		$app->post('/', $authorize(), function() use ($app, $resourceServer) { 
->>>>>>> a4b1daec7e53168b5033ba910dda9e5054f58ddd
 			$event = new event();
 
 			$hostid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
@@ -30,6 +25,37 @@
 
 			echo $json;
 		});
+
+		$app->get('/id/:eventid/', function($eventid) use ($app, $resourceServer) {
+			$event = new Event();
+
+			$json = $event->getEvent($eventid);
+
+			echo $json;
+		});
+
+		$app->get('/host/', $authorize(), function() use ($app, $resourceServer) {
+			$hostid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
+
+			$event = new Event();
+
+			$json = $event->getHostEvents($hostid);
+
+			echo $json;
+		});
+
+		// $app->post('/notify/', function() use ($app, $resourceServer) {
+		// 	$to = $app->request->post('to');
+		// 	$subject = $app->request->post('subject');
+		// 	$message = $app->request->post('message');
+		// 	$headers = "From: goraffleme@aol.com";
+		// 	if(mail("reyomar80@hotmail.com", $subject, $message)) {
+		// 		echo "MAIL SENT";
+		// 	}
+		// 	else {
+		// 		echo "MAIL FAILED";
+		// 	}
+		// }); HAVIG ISSUES WITH php.ini
 	});
 
 ?>
