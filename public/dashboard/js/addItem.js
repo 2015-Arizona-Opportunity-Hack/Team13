@@ -5,6 +5,8 @@ $(function() {
     getEvents();
     getItems();
 
+    $('#choosewinner').on('click', chooseWinner);
+
     $.validate({
         modules : 'location, date',
         onSuccess : function() {
@@ -29,6 +31,34 @@ $(function() {
 					    $(this).html(json.host.firstname + ' ' + json.host.lastname);
 					});
 
+	            }
+	        }
+	    });
+    }
+
+    function chooseWinner() {
+    	var itemid = $(this).attr('data-id');
+    	console.log('choosing winner ' + itemid);
+
+    	$.ajax({
+	        type: 'POST',
+	        url: '../server/item/winner',
+	        dataType: 'JSON',
+	        data: {itemid: itemid},
+	        headers: {
+		    "Authorization": "Bearer " + access_token
+		  	},
+	        success: function(json) {
+	        	console.log(json);
+	            if(json.success != false) {
+	            	console.log('success');
+	            	var template = $('#eventtemplate').html();
+			        Mustache.parse(template);   // optional, speeds up future uses
+			        var rendered = Mustache.render(template, json);
+			        $('#events').html(rendered);
+	            }else {
+	            	//Winner already chosen
+	            	$('#choosewinner').hide();
 	            }
 	        }
 	    });
@@ -129,6 +159,7 @@ $(function() {
 	            	$('#itemDescription').val(json.item.description);
 	            	$('#itemPrice').val(json.item.storeprice);
 	            	$('#viewitem').modal('show');
+	            	$('#choosewinner').attr('data-id', json.item.id);
 	            }
 	        }
 	    });

@@ -234,7 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div><!-- /.box-body -->
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Choose Winner</button>
+              <button type="button" id="choosewinner" class="btn btn-success pull-left">Choose Winner</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
           </div><!-- /.modal-content -->
