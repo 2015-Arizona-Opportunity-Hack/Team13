@@ -7,6 +7,9 @@ $(document).ready(function() {
 };
 
 
+$('.paypal-button').hide();
+
+
 
 var userList = new List('users', options);
 /* ----Objects Start---- */
@@ -156,7 +159,12 @@ function submitPayPal() {
         },
         error: function() {
         	//Temporary
-        	swal("Ticket Total: $"+ ticketTotal, "Redirecting to PayPal...", "success");
+        	//swal("Ticket Total: $"+ ticketTotal, "Redirecting to PayPal...", "success");
+
+
+        	$(".paypal-button").click();
+
+
         }
     });
 }
