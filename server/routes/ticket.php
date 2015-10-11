@@ -11,17 +11,16 @@ $app->group('/ticket', function() use($app, $authorize, $resourceServer) {
 		$participantid = $app->request->post('participantid');
 		$eventid = $app->request->post('eventid');
 		$orderid = $app->request->post('orderid');
-		$confirmation = $app->request->post('confirmation');
 
-		$json = $ticket->addTicket($participantid, $eventid, $orderid, $confirmation);
+		$json = $ticket->addTicket($participantid, $eventid, $orderid);
 
 		echo $json;
 	});
 
-	$app->get('/:id/', $authorize(), function($id) use ($app, $resourceServer) {
-		$order = new order();
+	$app->get('/event/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+		$ticket = new Ticket();
 
-		$json = $order->getOrder($id);
+		$json = $ticket->getTickets($eventid);
 
 		echo $json;
 	});

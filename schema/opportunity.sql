@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 10, 2015 at 07:45 PM
+-- Generation Time: Oct 10, 2015 at 10:54 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.13
 
@@ -44,14 +44,15 @@ CREATE TABLE IF NOT EXISTS `events` (
   `isvirtual` tinyint(1) DEFAULT NULL,
   `ticketprice` decimal(9,2) DEFAULT NULL,
   `description` text
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `hostid`, `name`, `startdate`, `enddate`, `addr1`, `addr2`, `city`, `state`, `zip`, `islocal`, `isvirtual`, `ticketprice`, `description`) VALUES
-(1, 3, 'Hackathon Rafle', '2015-10-10', '2015-10-11', '1122 east cool drive', NULL, 'tempe', 'az', 85282, 1, 1, '5.00', 'An raffle to raise money for future hackathons');
+(1, 3, 'Hackathon Rafle', '2015-10-10', '2015-10-11', '1122 east cool drive', NULL, 'tempe', 'az', 85282, 1, 1, '5.00', 'An raffle to raise money for future hackathons'),
+(2, 3, 'Test event', '2015-10-10', '2015-10-11', '1111 e awesome dr', '', 'tempe', 'az', 85282, 0, 0, '100.00', 'raffle event description');
 
 -- --------------------------------------------------------
 
@@ -303,7 +304,15 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL,
   `ordernumber` varchar(255) DEFAULT NULL,
   `ticketquantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `ordernumber`, `ticketquantity`) VALUES
+(1, '1sdfjshdjksdh', 1),
+(2, 'jkhkjhkjhk', 5);
 
 -- --------------------------------------------------------
 
@@ -319,31 +328,47 @@ CREATE TABLE IF NOT EXISTS `participants` (
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `participants`
+--
+
+INSERT INTO `participants` (`id`, `eventid`, `name`, `email`, `phone`, `orderid`) VALUES
+(2, 1, 'Jacob Parra', 'jacob@gmail.com', '6232226677', 1),
+(3, 1, 'Armand', 'armand@gmail.com', '6232226677', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ticket`
+-- Table structure for table `tickets`
 --
 
-DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE IF NOT EXISTS `ticket` (
+DROP TABLE IF EXISTS `tickets`;
+CREATE TABLE IF NOT EXISTS `tickets` (
   `id` int(11) NOT NULL,
   `participantid` int(11) DEFAULT NULL,
   `eventid` int(11) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL,
   `confirmation` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `participantid`, `eventid`, `orderid`, `confirmation`) VALUES
+(2, 2, 1, 1, 'TUUtcKQTZu'),
+(3, 2, 1, 1, '0480392325');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `winner`
+-- Table structure for table `winners`
 --
 
-DROP TABLE IF EXISTS `winner`;
-CREATE TABLE IF NOT EXISTS `winner` (
+DROP TABLE IF EXISTS `winners`;
+CREATE TABLE IF NOT EXISTS `winners` (
   `id` int(11) NOT NULL,
   `itemid` int(11) DEFAULT NULL,
   `participantid` int(11) DEFAULT NULL
@@ -463,9 +488,9 @@ ALTER TABLE `participants`
   ADD KEY `orderid_idxfk` (`orderid`);
 
 --
--- Indexes for table `ticket`
+-- Indexes for table `tickets`
 --
-ALTER TABLE `ticket`
+ALTER TABLE `tickets`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `participantid_idxfk` (`participantid`),
@@ -473,9 +498,9 @@ ALTER TABLE `ticket`
   ADD KEY `orderid_idxfk_1` (`orderid`);
 
 --
--- Indexes for table `winner`
+-- Indexes for table `winners`
 --
-ALTER TABLE `winner`
+ALTER TABLE `winners`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `itemid_idxfk` (`itemid`),
@@ -489,7 +514,7 @@ ALTER TABLE `winner`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `hosts`
 --
@@ -529,21 +554,21 @@ ALTER TABLE `oauth_session_scopes`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `ticket`
+-- AUTO_INCREMENT for table `tickets`
 --
-ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tickets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `winner`
+-- AUTO_INCREMENT for table `winners`
 --
-ALTER TABLE `winner`
+ALTER TABLE `winners`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
@@ -614,19 +639,19 @@ ALTER TABLE `participants`
   ADD CONSTRAINT `participants_ibfk_2` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`);
 
 --
--- Constraints for table `ticket`
+-- Constraints for table `tickets`
 --
-ALTER TABLE `ticket`
-  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`participantid`) REFERENCES `participants` (`id`),
-  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`eventid`) REFERENCES `events` (`id`),
-  ADD CONSTRAINT `ticket_ibfk_3` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`);
+ALTER TABLE `tickets`
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`participantid`) REFERENCES `participants` (`id`),
+  ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`eventid`) REFERENCES `events` (`id`),
+  ADD CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`);
 
 --
--- Constraints for table `winner`
+-- Constraints for table `winners`
 --
-ALTER TABLE `winner`
-  ADD CONSTRAINT `winner_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `items` (`id`),
-  ADD CONSTRAINT `winner_ibfk_2` FOREIGN KEY (`participantid`) REFERENCES `participants` (`id`);
+ALTER TABLE `winners`
+  ADD CONSTRAINT `winners_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `items` (`id`),
+  ADD CONSTRAINT `winners_ibfk_2` FOREIGN KEY (`participantid`) REFERENCES `participants` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

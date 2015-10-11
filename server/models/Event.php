@@ -48,7 +48,7 @@
 			$event->ticketprice = $ticketprice;
 			$event->description = $description;
 
-			$save = $event->save();
+			$saved = $event->save();
 
 			if($saved) {
 				$array = array('success' => true,

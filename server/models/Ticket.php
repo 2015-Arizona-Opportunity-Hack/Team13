@@ -32,12 +32,21 @@ class Ticket extends Eloquent {
 		$this->database = Database::getInstance();
 	}
 
-	public function addTicket($participantid, $eventid, $orderid, $confirmation) {
+	public function addTicket($participantid, $eventid, $orderid) {
+
+		$characters = '0123456789';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < 10; $i++) {
+	        $randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+
+
 		$ticket = new Ticket();
 		$ticket->participantid = $participantid;
 		$ticket->eventid = $eventid;
 		$ticket->orderid = $orderid;
-		$ticket->confirmation = $confirmation;
+		$ticket->confirmation = $randomString;
 
 		$saved = $ticket->save();
 
