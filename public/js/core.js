@@ -113,7 +113,14 @@ function signUp() {
         dataType: 'JSON',
         success: function(json) {
             console.log(json);
-            swal("Successfully Registered!", "Sign in with new credentials.", "success")
+            if (json.success == true) {
+            	swal("Successfully Registered!", "Sign in with new credentials.", "success")
+    		}
+    		else if (json.success == false) {
+    			sweetAlert(json.message, "Please try again.", "error");
+    		}
+            $('#signupbox').hide(); 
+            $('#loginbox').show();
         },
         error: function() {
         	sweetAlert("Invalid Registration", "Please try again.", "error");
