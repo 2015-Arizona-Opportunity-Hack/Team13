@@ -53,5 +53,15 @@
 				return json_encode($array);	
 			}
 		}
+
+		public function getItems($eventid) {
+			$items = Item::where('eventid', $eventid)->get();
+			if ($items != null) {
+				echo $items;	
+			} 
+			else {
+				echo "NO ITEMS!";
+			}
+		}
 	}
 ?>

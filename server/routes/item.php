@@ -25,5 +25,21 @@
 			}
 
 		});
+
+		$app->get('/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+			$item = new Item();
+			$event = new Event();
+			$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
+
+			if ($event->verifyHost($eventid,$userid)) {
+				$json = $item->getItems($eventid);
+				echo $json;
+			}
+			else {
+				echo "WRONG HOST!";
+			}
+			
+		});
+
 	});
 ?>
