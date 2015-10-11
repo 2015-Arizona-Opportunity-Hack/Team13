@@ -27,7 +27,7 @@
 
 		});
 
-		$app->get('/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+		$app->get('/event/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
 			$item = new Item();
 			$event = new Event();
 			$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
@@ -40,6 +40,12 @@
 				echo "WRONG HOST!";
 			}
 			
+		});
+
+		$app->get('/:itemid/', $authorize(), function($itemid) use ($app, $resourceServer) {
+			$item = new Item();
+			$json = $item->getItem($itemid);
+			echo $json;
 		});
 
 		$app->post('/winner/', $authorize(), function() use ($app, $resourceServer) {
