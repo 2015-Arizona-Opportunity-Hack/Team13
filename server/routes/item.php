@@ -80,8 +80,9 @@
 			}	
 		});
 
-		$app->get('/winner/:itemid', $authorize($itemid), function() use ($app, $resourceServer) {
+		$app->get('/winner/:itemid/', $authorize(), function($itemid) use ($app, $resourceServer) {
 			$winner = new Winner();
+			
 			$json = $winner->lookupWinner($itemid);
 
 			echo $json;

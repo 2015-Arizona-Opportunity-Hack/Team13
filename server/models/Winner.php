@@ -63,12 +63,13 @@
 			if ($winner != null) {
 				$luckyWinner = Participant::where('id', $winner->participantid)->first();
 				$array = array('success' => true,
-						'winner' => $winner);
-				return $array;
+						'winner' => $luckyWinner);
+				return json_encode($array);	
 			}
 			else {
 				$array = array('success' => false,
 						'message' => "NO WINNER CHOSEN");
+				return json_encode($array);	
 			}
 		}
 	}
