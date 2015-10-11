@@ -41,5 +41,14 @@
 			
 		});
 
+		$app->post('/winner/', $authorize(), function() use ($app, $resourceServer) {
+			$winner = new Winner();
+			$itemid = $app->request->post('itemid');
+			
+			$json = $winner->pickWinner($itemid);
+
+			echo $json;
+		});
+
 	});
 ?>

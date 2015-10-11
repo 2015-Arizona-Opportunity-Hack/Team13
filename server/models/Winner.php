@@ -3,6 +3,7 @@
 
 	use Lib\Database;
 	use Lib\Hash;
+	use Models\Item;
 	use Illuminate\Database\Eloquent\Model as Eloquent;
 
 	class Winner extends Eloquent {	
@@ -29,6 +30,11 @@
 		
 		function __construct() {
 			$this->database = Database::getInstance();
+		}
+
+		public function pickWinner($itemid) {
+			$item = new Item();
+			$tickets = $item->getTickets();
 		}
 	}
 ?>
