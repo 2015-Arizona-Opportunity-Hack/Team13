@@ -42,8 +42,9 @@
 				$saved = $winner->save();
 
 				if($saved) {
+					$luckyWinner = Participant::where('id', $winner->participantid)->first();
 					$array = array('success' => true,
-						'winner' => $winner);
+						'winner' => $luckyWinner);
 
 					return json_encode($array);
 				} else {
