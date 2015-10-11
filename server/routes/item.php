@@ -2,6 +2,7 @@
 	use Models\Item;
 	use Models\Winner;
 	use Models\Ticket;
+	use Models\Participant;
 	use Models\Event;
 	use Lib\OAuth2\OAuth2;
 
