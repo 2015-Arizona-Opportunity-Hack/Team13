@@ -25,7 +25,7 @@
 			$json = $event->addEvent($hostid, $name, $startdate, $enddate, $addr1, $addr2, $city, $state, $zip, $islocal, $isvirtual, $ticketprice, $description);
 
 			echo $json;
-		}
+		});
 	});
 
 ?>
