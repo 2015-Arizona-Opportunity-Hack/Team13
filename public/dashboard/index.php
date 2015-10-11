@@ -82,20 +82,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- The user image in the navbar-->
                   <img src="img/ticket.jpg" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span id="fullname" class="hidden-xs">Alexander Pierce</span>
+                  <span id="fullname" class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="img/ticket.jpg" class="img-circle" alt="User Image">
                     <p>
-                      <span id="fullname">Alexander Pierce</span>
+                      <span id="fullname"></span>
                     </p>
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div>
-                      <center><a href="#" class="btn btn-default btn-flat">Sign out</a></center>
+                      <center><a id="signOut" href="#" class="btn btn-default btn-flat">Sign Out</a></center>
                     </div>
                   </li>
                 </ul>
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <img src="img/ticket.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p><span id="fullname">Alexander Pierce</span></p>
+              <p><span id="fullname"></span></p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

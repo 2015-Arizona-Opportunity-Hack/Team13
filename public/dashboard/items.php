@@ -82,20 +82,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- The user image in the navbar-->
                   <img src="img/ticket.jpg" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span id="fullname" class="hidden-xs">Alexander Pierce</span>
+                  <span id="fullname" class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="img/ticket.jpg" class="img-circle" alt="User Image">
                     <p>
-                      <span id="fullname">Alexander Pierce</span>
+                      <span id="fullname"></span>
                     </p>
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div>
-                      <center><a href="#" class="btn btn-default btn-flat">Sign out</a></center>
+                      <center><a id=signOut href="#" class="btn btn-default btn-flat">Sign Out</a></center>
                     </div>
                   </li>
                 </ul>
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <img src="img/ticket.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p><span id="fullname">Alexander Pierce</span></p>
+              <p><span id="fullname"></span></p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Add Item To Event
+            Add Item or Choose Event Winner
           </h1>
         </section>
 
@@ -146,7 +146,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="list-group" id="currentitems">
                 <script id="currentitemstemplate" type="x-tmpl-mustache">
                 {{ #items }}
-                <a href="#" id="{{id}}" class="list-group-item">{{name}}</a>
+                <div id="{{id}}">
+                  <a href="#" id="{{id}}" class="list-group-item">{{name}}</a>
+                  Winner: <span name="winnername">To Be Determined</span></br></br>
+                </div>
                 {{ /items }}
                 </script>
               </div>
@@ -165,62 +168,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label for="name" class="col-sm-2 control-label">Name</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
+                        <input id="iName" type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="addr1" class="col-sm-2 control-label">Address 1</label>
+                      <label for="ticketprice" class="col-sm-2 control-label">Store Price</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="addr1" data-validation="required length" data-validation-length="max100">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="addr2" class="col-sm-2 control-label">Address 2</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="addr2" data-validation="length" data-validation-length="max100">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="city" class="col-sm-2 control-label">City</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="city" data-validation="required length" data-validation-length="max100">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="state" class="col-sm-2 control-label">State</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="state" data-validation="required federatestate">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="zip" class="col-sm-2 control-label">Zip</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="zip" data-validation="required number">
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
-                 
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="ticketprice" class="col-sm-2 control-label">Ticket Price</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="ticketprice" data-validation="required number" data-validation-allowing="float">
+                        <input id="iPrice" type="text" class="form-control" name="ticketprice" data-validation="required number" data-validation-allowing="float">
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="name" class="col-sm-2 control-label">Description</label>
+                      <label for="description" class="col-sm-2 control-label">Description</label>
                       <div class="col-sm-8">
-                        <textarea type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max300"></textarea>
+                        <textarea id="iDescription" type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max300"></textarea>
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   
                   <div class="box-footer">
-                    <!--<button type="submit" class="btn btn-info pull-right">Add Event</button>-->
+                    <button type="submit" class="btn btn-info center-block ">Add Item</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div><!-- /.box -->
@@ -242,28 +212,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
+                    <input id="itemName"type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
                   </div>
                 </div>
               </div><!-- /.box-body -->
               <div class="box-body">
                 <div class="form-group">
-                  <label for="description" class="col-sm-2 control-label">Description</label>
+                  <label for="description" class="col-sm-2 control-label">Store Price</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max100">
+                    <input id="itemPrice" type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max100">
                   </div>
                 </div>
               </div><!-- /.box-body -->
               <div class="box-body">
                 <div class="form-group">
-                  <label for="storeprice" class="col-sm-2 control-label">Store8 Price</label>
+                  <label for="storeprice" class="col-sm-2 control-label">Description</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="storeprice" data-validation="required number" data-validation-allowing="float">
+                    <input id="itemDescription" type="text" class="form-control" name="storeprice" data-validation="required number" data-validation-allowing="float">
                   </div>
                 </div>
               </div><!-- /.box-body -->
             </div>
             <div class="modal-footer">
+              <button type="button" id="choosewinner" class="btn btn-success pull-left">Choose Winner</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
           </div><!-- /.modal-content -->
@@ -290,7 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <div class="modal fade" id="fail">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-f">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">Error</h4>

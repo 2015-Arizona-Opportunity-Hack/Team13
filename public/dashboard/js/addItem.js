@@ -1,10 +1,11 @@
 $(function() {
-	//token = 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt';
+	var access_token = $.cookie("token");
 
 	getName();
     getEvents();
-
     getItems();
+
+    $('#choosewinner').on('click', chooseWinner);
 
     $.validate({
         modules : 'location, date',
@@ -13,6 +14,8 @@ $(function() {
           return false; // Will stop the submission of the form
         }
     });
+
+    $("#signOut").click(signOut);
 
     function getName() {
     	$.ajax({
@@ -27,9 +30,37 @@ $(function() {
 	            	console.log(json);
 
 	            	$.each($('span#fullname'), function() {
-					    $(this).html(json.firstname + ' ' + json.lastname);
+					    $(this).html(json.host.firstname + ' ' + json.host.lastname);
 					});
 
+	            }
+	        }
+	    });
+    }
+
+    function chooseWinner() {
+    	var itemid = $(this).attr('data-id');
+    	console.log('choosing winner ' + itemid);
+
+    	$.ajax({
+	        type: 'POST',
+	        url: '../server/item/winner',
+	        dataType: 'JSON',
+	        data: {itemid: itemid},
+	        headers: {
+		    "Authorization": "Bearer " + access_token
+		  	},
+	        success: function(json) {
+	        	console.log(json);
+	            if(json.success != false) {
+	            	console.log('success');
+	            	var template = $('#eventtemplate').html();
+			        Mustache.parse(template);   // optional, speeds up future uses
+			        var rendered = Mustache.render(template, json);
+			        $('#events').html(rendered);
+	            }else {
+	            	//Winner already chosen
+	            	$('#choosewinner').hide();
 	            }
 	        }
 	    });
@@ -58,7 +89,7 @@ $(function() {
     function getItems() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/item/' + param('id'),
+	        url: '../server/item/event/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -75,16 +106,50 @@ $(function() {
 	            		var id = $(this).attr('id');
 	            		viewItem(id);
 	            	});
+
+	            	checkWinners(json.items)
 	            }
+	        },
+	        error: function(json) {
+	        	console.log(json);
+	        	alert("FAIL!!!!!");
 	        }
+
 	    });
     }
 
+    function checkWinners(json) {
+    	console.log('winners');
+
+    	$.each(json, function(){
+    		console.log($(this));
+    		$.ajax({
+		        type: 'GET',
+		        url: '../server/item/winner/' + $(this)[0].id,
+		        dataType: 'JSON',
+		        headers: {
+			    "Authorization": "Bearer " + access_token
+			  	},
+		        success: function(json) {
+		        	console.log('looking up item');
+		        	console.log(json);
+		            if(json.success != false) {
+		            	//Display winner
+		            	var test = $('div#'+param('id')+' span[name=winnername]').html(json.winner.name);
+		            	console.log(test);
+		            }
+		        }
+
+		    });
+    	});
+
+    	
+    }
+
     function viewItem(id) {
-    	$('#viewitem').modal('show');
     	$.ajax({
 	        type: 'GET',
-	        url: 'http://localhost/Team13/server/item/' + param('id'),
+	        url: '../server/item/' + id,
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -92,14 +157,52 @@ $(function() {
 	        success: function(json) {
 	        	console.log(json);
 	            if(json.success != false) {
+	            	$('#itemName').val(json.item.name);
+	            	$('#itemDescription').val(json.item.description);
+	            	$('#itemPrice').val(json.item.storeprice);
 	            	$('#viewitem').modal('show');
+	            	$('#choosewinner').attr('data-id', json.item.id);
 	            }
 	        }
 	    });
     }
 
     function addItem() {
+    	var item = {
+    		eventid: param('id'),
+    		name:  $("#iName").val(),
+    		storeprice: $("#iPrice").val(),
+    		description: $("#iDescription").val()
+    	};
+    	console.log(item);
+    	$.ajax({
+	        type: 'POST',
+	        url: '../server/item/',
+	        dataType: 'JSON',
+	        data:item,
+	        headers: {
+		    "Authorization": "Bearer " + access_token
+		  	},
+	        success: function(json) {
+	            if(json.success != false) {
+	            	$('#success').modal("show");
+	            	getItems();
+	            	setTimeout(function(){
+					   window.location.reload(1);
+					}, 3000);
+	            }
+	            else {
+	            	$('#fail').modal("show");
+	            }
+	        },
+	        error: function() {
+	        	$('#fail').modal("show");
+	        }
+	    });
+    }
 
+    function signOut() {
+    	window.location.href = "../";
     }
 
     function param(name) {

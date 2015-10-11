@@ -12,7 +12,7 @@ class Ticket extends Eloquent {
      *
      * @var string
      */
-    protected $table = 'ticket';
+    protected $table = 'tickets';
     /**
      * The database table primary key used by the model.
      *

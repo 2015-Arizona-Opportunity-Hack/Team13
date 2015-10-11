@@ -133,7 +133,7 @@ function goToEvent() {
 	var eventId = $("#eventId").val();
 	$.ajax({
 		type: 'GET',
-		url: '../server/index.php/event/id/'+eventId,
+		url: 'server/index.php/event/id/'+eventId,
 		success: function(json) {
 			console.log(json);
 			if (eventId == json.event.id) {
@@ -154,13 +154,13 @@ function login() {
 	$.ajax({
 		type: 'POST',
 		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
-		url: '../server/index.php/access_token',
+		url: 'server/index.php/access_token',
 		success: function(json) {
 			console.log(json);
 			//token = json.access_token;
 			$.cookie('token', json.access_token);
 			console.log($.cookie('token'));
-			window.location.href = "dashboard";
+			window.location.href = "dashboard/index.php";
 		},
 		error: function() {
 			sweetAlert("Invalid Username or Password", "Please try again.", "error");

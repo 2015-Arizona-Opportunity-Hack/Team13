@@ -8,9 +8,8 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>{{name}}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li><a href="event.php?id={{id}}">Info</a></li>
-          <li><a href="addItem.php?id={{id}}">Add Item</a></li>
-          <li><a href="winner.php?id={{id}}">Choose Winner</a></li>
+          <li><a href="event.php?id={{id}}">Information</a></li>
+          <li><a href="items.php?id={{id}}">Items</a></li>
         </ul>
       </li>
       {{ /events }}

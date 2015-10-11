@@ -1,5 +1,5 @@
 $(function() {
-	//token = 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt';
+	var access_token = $.cookie("token");
 
 	getName();
     getEvents();
@@ -14,6 +14,8 @@ $(function() {
         }
     });
 
+    $("#signOut").click(signOut);
+
     function getName() {
     	$.ajax({
 	        type: 'GET',
@@ -27,7 +29,7 @@ $(function() {
 	            	console.log(json);
 
 	            	$.each($('span#fullname'), function() {
-					    $(this).html(json.firstname + ' ' + json.lastname);
+					    $(this).html(json.host.firstname + ' ' + json.host.lastname);
 					});
 
 	            }
@@ -66,18 +68,22 @@ $(function() {
 	        success: function(json) {
 	        	console.log(json);
 	            if(json.success != false) {
-	            	$('input[name="name"]').val(json.name);
-	            	$('input[name="addr1"]').val(json.addr1);
-	            	$('input[name="addr2"]').val(json.addr2);
-	            	$('input[name="city"]').val(json.city);
-	            	$('input[name="state"]').val(json.state);
-	            	$('input[name="zip"]').val(json.zip);
-	            	$('input[name="ticketprice"]').val(json.ticketprice);
-	            	$('textarea[name="description"]').html(json.description);
+	            	$('input[name="name"]').val(json.event.name);
+	            	$('input[name="addr1"]').val(json.event.addr1);
+	            	$('input[name="addr2"]').val(json.event.addr2);
+	            	$('input[name="city"]').val(json.event.city);
+	            	$('input[name="state"]').val(json.event.state);
+	            	$('input[name="zip"]').val(json.event.zip);
+	            	$('input[name="ticketprice"]').val(json.event.ticketprice);
+	            	$('textarea[name="description"]').html(json.event.description);
 	            	
 	            }
 	        }
 	    });
+    }
+
+    function signOut() {
+    	window.location.href="../";
     }
 
     function param(name) {

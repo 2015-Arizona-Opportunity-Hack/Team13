@@ -2,6 +2,7 @@
 	use Models\Item;
 	use Models\Winner;
 	use Models\Ticket;
+	use Models\Participant;
 	use Models\Event;
 	use Lib\OAuth2\OAuth2;
 
@@ -22,7 +23,11 @@
 				echo $json;
 			}
 			else {
-				echo "WRONG HOST!";
+
+				$array = array('success' => false,
+					'message' => 'Failed to add item');
+
+				echo json_encode($array);	
 			}
 
 		});
@@ -37,7 +42,10 @@
 				echo $json;
 			}
 			else {
-				echo "WRONG HOST!";
+				$array = array('success' => false,
+					'message' => 'Failed to find event');
+
+				echo json_encode($array);	
 			}
 			
 		});
@@ -55,7 +63,10 @@
 			$item = $item->getItem($itemid);
 			if ($item != null) {
 				$ticket = new Ticket();
-				$tickets = $ticket->getTickets($item->eventid);
+				$item = json_decode($item);
+				$item = $item->item;
+				$ticketDecode = json_decode($ticket->getTickets($item->eventid),true);
+				$tickets = $ticketDecode['tickets'];
 				$event = new Event();
 				$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
 				if ($event->verifyHost($item->eventid, $userid)) {
@@ -63,8 +74,22 @@
 						$numTix = sizeof($tickets);
 						$winningNum = rand(0,$numTix);
 						$ticket = $tickets[$winningNum];
-						$json = $winner->pickWinner($itemid, $ticket->participantid);//either ticket or winner is empty....//
-						echo $json;
+						$lucky = json_decode($winner->pickWinner($itemid, $ticket['participantid']));
+						$luckyWinner = $lucky->winner;
+						if ($luckyWinner != "Winner already chosen") {
+							$luckyParticipant = Participant::where('id', $luckyWinner->participantid)->first();
+							
+							$array = array('success' => true,
+							'ticket' => $ticket, 'participant' => $luckyParticipant);
+
+							echo json_encode($array);	
+						}
+						else {
+							$array = array('success' => false,
+							'message' => "Winner already chosen");
+
+							echo json_encode($array);		
+						}
 					}
 					else {
 						echo "NO TICKETS PURCHASED!!";
@@ -79,5 +104,13 @@
 			}	
 		});
 
+		$app->get('/winner/:itemid/', $authorize(), function($itemid) use ($app, $resourceServer) {
+			$winner = new Winner();
+
+			$json = $winner->lookupWinner($itemid);
+
+			echo $json;
+		});
+		
 	});
 ?>

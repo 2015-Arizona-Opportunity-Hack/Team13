@@ -4,6 +4,7 @@
 	use Lib\Database;
 	use Lib\Hash;
 	use Models\Item;
+	use Models\Participant;
 	use Illuminate\Database\Eloquent\Model as Eloquent;
 
 	class Winner extends Eloquent {	
@@ -12,7 +13,7 @@
 	     *
 	     * @var string
 	     */
-	    protected $table = 'winner';
+	    protected $table = 'winners';
 	    /**
 	     * The database table primary key used by the model.
 	     *
@@ -42,18 +43,36 @@
 
 				if($saved) {
 					$array = array('success' => true,
-						'item' => $winner);
+						'winner' => $winner);
 
 					return json_encode($array);
 				} else {
 					$array = array('success' => false,
-						'message' => 'Failed to pick winner');
+						'winner' => 'Failed to pick winner');
 
 					return json_encode($array);	
 				}
 			}
 			else {
-				return "ITEM HAS ALREADY BEEN WON!!!";
+				$array = array('success' => false,
+						'winner' => 'Winner already chosen');
+
+				return json_encode($array);	
+			}
+		}
+
+		public function lookupWinner($itemid) {
+			$winner = Winner::where('itemid', $itemid)->first();
+			if ($winner != null) {
+				$luckyWinner = Participant::where('id', $winner->participantid)->first();
+				$array = array('success' => true,
+						'winner' => $luckyWinner);
+				return json_encode($array);	
+			}
+			else {
+				$array = array('success' => false,
+						'message' => "NO WINNER CHOSEN");
+				return json_encode($array);	
 			}
 		}
 	}
