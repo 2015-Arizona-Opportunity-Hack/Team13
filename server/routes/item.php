@@ -55,7 +55,9 @@
 			$item = $item->getItem($itemid);
 			if ($item != null) {
 				$ticket = new Ticket();
-				$tickets = $ticket->getTickets($item->eventid);
+				$ticketDecode = json_decode($ticket->getTickets($item->eventid),true);
+				$tickets = $ticketDecode['tickets'];
+				//print_r ($tickets);
 				$event = new Event();
 				$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
 				if ($event->verifyHost($item->eventid, $userid)) {
@@ -63,7 +65,7 @@
 						$numTix = sizeof($tickets);
 						$winningNum = rand(0,$numTix);
 						$ticket = $tickets[$winningNum];
-						$json = $winner->pickWinner($itemid, $ticket->participantid);//either ticket or winner is empty....//
+						$json = $winner->pickWinner($itemid, $ticket['participantid']);
 						echo $json;
 					}
 					else {
