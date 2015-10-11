@@ -26,7 +26,7 @@
 			echo $json;
 		});
 
-		$app->get('/:eventid/', function($eventid) use ($app, $resourceServer) {
+		$app->get('/id/:eventid/', function($eventid) use ($app, $resourceServer) {
 			$event = new Event();
 
 			$json = $event->getEvent($eventid);
