@@ -64,8 +64,13 @@
 						$numTix = sizeof($tickets);
 						$winningNum = rand(0,$numTix);
 						$ticket = $tickets[$winningNum];
-						$json = $winner->pickWinner($itemid, $ticket['participantid']);
-						echo $json;
+						$luckyWinner = $winner->pickWinner($itemid, $ticket['participantid']);
+						$luckyParticipant = Participant::where('id', $luckyWinner->participantid)->first();
+						
+						$array = array('success' => true,
+						'ticket' => $ticket, 'participant' => $luckyParticipant);
+
+						echo json_encode($array);	
 					}
 					else {
 						echo "NO TICKETS PURCHASED!!";
@@ -82,7 +87,7 @@
 
 		$app->get('/winner/:itemid/', $authorize(), function($itemid) use ($app, $resourceServer) {
 			$winner = new Winner();
-			
+
 			$json = $winner->lookupWinner($itemid);
 
 			echo $json;
