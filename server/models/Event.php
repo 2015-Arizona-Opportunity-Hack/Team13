@@ -66,8 +66,9 @@
 		//check to make sure the host editing the event is the actual owner//
 		public function verifyHost($eventid, $userid) {
 			$event = Event::where('id', $eventid)->first();
+
 			$hostid = $event->hostid;
-			if ($userid === $hostid) {
+			if ($userid == $hostid) {
 				return true;
 			}
 			return false;
