@@ -34,6 +34,15 @@
 			echo $json;
 		});
 
+		$app->get('/host/:hostid/', $authorize(), function($hostid) use ($app, $resourceServer) {
+			
+			$event = new Event();
+
+			$json = $event->getHostEvents($hostid);
+
+			echo $json;
+		});
+
 		// $app->post('/notify/', function() use ($app, $resourceServer) {
 		// 	$to = $app->request->post('to');
 		// 	$subject = $app->request->post('subject');

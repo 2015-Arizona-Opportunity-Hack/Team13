@@ -82,6 +82,15 @@
 			}
 		}
 
+		public function getHostEvents($hostid) {
+			$events = Event::where('hostid', $hostid)->get();
+
+			$array = array('success' => true,
+					'events' => $events);
+
+			return json_encode($array);
+		}
+
 	}
 
 ?>
