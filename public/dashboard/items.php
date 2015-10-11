@@ -208,6 +208,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <h4 class="modal-title">View Item</h4>
             </div>
             <div class="modal-body" id="view">
+              <center>
+              <img id="imgurl" src="http://smartrealtysd.com/wp-content/uploads/2015/07/calc_home.png" class="img-rounded" width="300" height="200">
+            </center>
               <div class="box-body">
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">Name</label>

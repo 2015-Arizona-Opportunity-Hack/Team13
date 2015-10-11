@@ -157,6 +157,7 @@ $(function() {
 	            	$('#itemName').val(json.item.name);
 	            	$('#itemDescription').val(json.item.description);
 	            	$('#itemPrice').val(json.item.storeprice);
+	            	$('#imgurl').attr('src',json.item.pathtopic);
 	            	$('#viewitem').modal('show');
 	            	$('#choosewinner').attr('data-id', json.item.id);
 	            }
