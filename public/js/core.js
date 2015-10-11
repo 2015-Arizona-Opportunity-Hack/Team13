@@ -151,7 +151,9 @@ function login() {
 		url: '../server/index.php/access_token',
 		success: function(json) {
 			console.log(json);
-			token = json.access_token;
+			//token = json.access_token;
+			$.cookie('token', json.access_token);
+			console.log($.cookie('token'));
 			window.location.href = "dashboard";
 		},
 		error: function() {

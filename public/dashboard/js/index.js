@@ -1,5 +1,5 @@
 $(function() {
-	//token = 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt';
+	access_token = $.cookie("token");
 
 	getName();
     getEvents();
@@ -15,10 +15,10 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/host',
+	        url: '../server/index.php/host',
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	            if(json.success != false) {
@@ -36,10 +36,10 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/event/host',
+	        url: '../server/index.php/event/host',
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	            if(json.success != false) {
@@ -61,11 +61,11 @@ $(function() {
 
     	$.ajax({
 	        type: 'POST',
-	        url: '../server/event/',
+	        url: '../server/index.php/event/',
 	        data: data,
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	            console.log(json);

@@ -20,7 +20,7 @@ $(function() {
 	        url: '../server/host',
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	            if(json.success != false) {
@@ -41,7 +41,7 @@ $(function() {
 	        url: '../server/event/host',
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	            if(json.success != false) {
@@ -61,7 +61,7 @@ $(function() {
 	        url: '../server/event/id/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
-		    "Authorization": "Bearer " + token
+		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
 	        	console.log(json);
