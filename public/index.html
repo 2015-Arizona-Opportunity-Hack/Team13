@@ -187,12 +187,12 @@
                     <form id="participantform" class="form-horizontal" role="form" data-toggle="validator" data-disable="false">
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="login-username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" value="" placeholder="event id">
+                            <input id="eventId" type="text" class="form-control" data-validation="number" data-validation-length="max100" name="username" value="" placeholder="event id">
                         </div>
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-success">Go to Event</a>
+                                <button type="submit" id="toEvent" id="btn-login" href="#" class="btn btn-success">Go to Event</a>
                             </div>
                         </div>
                         <button title="Close (Esc)" type="button" class="mfp-close">×</button>
@@ -313,7 +313,7 @@
                 <div id="contact_form" class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h2 class="black">Contact Us</h2>
-                        <form role="form" id="feedbackForm" data-toggle="validator" data-disable="false">
+                        <form role="form" id="feedbackform" data-toggle="validator" data-disable="false">
                             <div class="form-group">
                                 <label class="control-label" for="name">Name *</label>
                                 <div class="input-group">
