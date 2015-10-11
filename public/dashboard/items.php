@@ -148,8 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 {{ #items }}
                 <div id="{{id}}">
                   <a href="#" id="{{id}}" class="list-group-item">{{name}}</a>
-                  Winner: <span name="winnername">To Be Determined</span></br>
-                  Ticket: <span name="ticketnumber">To Be Determined</span></br></br>
+                  Winner: <span name="winnername">To Be Determined</span></br></br>
                 </div>
                 {{ /items }}
                 </script>
