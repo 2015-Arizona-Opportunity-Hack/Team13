@@ -64,7 +64,7 @@
 		}
 
 		//check to make sure the host editing the event is the actual owner//
-		public static boolean verifyHost($eventid) {
+		public function verifyHost($eventid) {
 			$event = Event::where('id', $eventid)->first();
 			if ($resourceServer->getAccessToken()->getSession()->getOwnerId() == $event->hostid) {
 				return true;
