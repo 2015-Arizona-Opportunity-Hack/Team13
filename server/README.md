@@ -1,14 +1,9 @@
-# PackMinder Server 
+# GoRaffleMe crowdfunding tool 
 
 Getting started:
 
-1) Get Composer Dependency Manager
-```
-https://getcomposer.org/download/
-```
+1) Set up a Raffle
 
-2)
+2) Make tons of $$$
 
-```
-$ composer install
-```
+3) Give away cool stuff

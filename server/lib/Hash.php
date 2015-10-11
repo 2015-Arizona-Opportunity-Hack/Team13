@@ -38,63 +38,60 @@
 ** 
 */
 
-namespace Lib;
+	namespace Lib;
 
-require_once("Config.php");
+	require_once("Config.php");
 
-class Hash {
+	class Hash {
 
-	private static $instance;
+		private static $instance;
 
-	public static function createKey() {
-		//Used to create the local salt key
-		if(function_exists('openssl_random_pseudo_bytes')) {
-			return base64_encode(openssl_random_pseudo_bytes(128));
-		} else {
-			return base64_encode(mcrypt_create_iv(128, MCRYPT_DEV_URANDOM));
+		public static function createKey() {
+			//Used to create the local salt key
+			if(function_exists('openssl_random_pseudo_bytes')) {
+				return base64_encode(openssl_random_pseudo_bytes(128));
+			} else {
+				return base64_encode(mcrypt_create_iv(128, MCRYPT_DEV_URANDOM));
+			}
 		}
+
+		public static function hash($pass="") {
+			//Creating a HMAC using a locally stored salt key outside of the public directory
+		    $hmac = hash_hmac('sha512', $pass, LOCAL_SECRET);
+
+		    //Creating salt for bcrypt
+		    $bytes = openssl_random_pseudo_bytes(16); //Recommended by Mozilla 
+		    // If we don't have access to openssql_random_pseudo_bytes then use mycrpt_create_iv
+		    //$bytes = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM); 
+		    
+		    //Replace '+' with '.' because bcrypt salt does not allow '+'
+		    $salt = strtr(base64_encode($bytes), '+', '.');
+		    //Extract 22 characters because required length for salt should be 22 characters in length
+		    $salt = substr($salt, 0, 22);
+
+		    //Hashed password with blowfish algorithm
+		    $bcrypt = crypt($hmac, '$2y$12$' . $salt);
+
+		    return $bcrypt;
+		}
+
+		public static function isValid($pass="", $hash="") {
+			//Re-hashing with locally stored salt key
+			$hmac = hash_hmac('sha512', $pass, LOCAL_SECRET);
+
+			if (crypt($hmac, $hash) === $hash) 
+				return true;
+			else 
+				return false;
+		}
+
+		public static function getInstance() {
+	        if (!isset(self::$instance))
+	        {
+	            $object = __CLASS__;
+	            self::$instance = new $object;
+	        }
+	        return self::$instance;
+	    }
 	}
-
-	public static function hash($pass="") {
-		//Creating a HMAC using a locally stored salt key outside of the public directory
-	    $hmac = hash_hmac('sha512', $pass, LOCAL_SECRET);
-
-	    //Creating salt for bcrypt
-	    $bytes = openssl_random_pseudo_bytes(16); //Recommended by Mozilla 
-	    // If we don't have access to openssql_random_pseudo_bytes then use mycrpt_create_iv
-	    //$bytes = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM); 
-	    
-	    //Replace '+' with '.' because bcrypt salt does not allow '+'
-	    $salt = strtr(base64_encode($bytes), '+', '.');
-	    //Extract 22 characters because required length for salt should be 22 characters in length
-	    $salt = substr($salt, 0, 22);
-
-	    //Hashed password with blowfish algorithm
-	    $bcrypt = crypt($hmac, '$2y$12$' . $salt);
-
-	    return $bcrypt;
-	}
-
-	public static function isValid($pass="", $hash="") {
-		//Re-hashing with locally stored salt key
-		$hmac = hash_hmac('sha512', $pass, LOCAL_SECRET);
-
-		if (crypt($hmac, $hash) === $hash) 
-			return true;
-		else 
-			return false;
-	}
-
-	public static function getInstance() {
-        if (!isset(self::$instance))
-        {
-            $object = __CLASS__;
-            self::$instance = new $object;
-        }
-        return self::$instance;
-    }
-}
-
-
-
 ?>
