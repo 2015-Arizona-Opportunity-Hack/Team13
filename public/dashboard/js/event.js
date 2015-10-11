@@ -19,7 +19,7 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/host',
+	        url: '../server/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -40,7 +40,7 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/event/host',
+	        url: '../server/event/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -60,7 +60,7 @@ $(function() {
     function getEvent() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../../server/event/id/' + param('id'),
+	        url: '../server/event/id/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
