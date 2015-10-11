@@ -1,6 +1,12 @@
 token = "";
 
 $(document).ready(function() {
+
+	var options = {
+  valueNames: [ 'name', 'born' ]
+};
+
+var userList = new List('users', options);
 /* ----Objects Start---- */
 /* Host */
 function host(id, firstName, lastName, email, phone, userName, password) {
@@ -130,7 +136,7 @@ function goToEvent() {
 		url: 'server/index.php/event/id/'+eventId,
 		success: function(json) {
 			console.log(json);
-			if (eventId == json.event.id) {
+			if (json.success == true) {
 				window.location.href = "event.html?id=" + eventId;
 			}
 			else {
