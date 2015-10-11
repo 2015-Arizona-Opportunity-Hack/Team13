@@ -78,10 +78,14 @@
 		public function getEvent($eventid) {
 			$event = Event::where('id', $eventid)->first();
 			if($event != null) {
-				return $event;
+				$array = array('success' => true,
+					'event' => $event);
+						return json_encode($array);
 			}
 			else {
-				echo "EVENT NOT FOUND!";
+				$array = array('success' => false,
+					'event' => $event);
+				return json_encode($array);
 			}
 		}
 
