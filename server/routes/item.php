@@ -49,7 +49,9 @@
 			if ($item != null) {
 				$ticket = new Ticket();
 				$tickets = $ticket->getTickets($item->eventid);
-				if ($tickets != null) {
+				$event = new Event();
+				$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
+				if ($tickets != null && $event->verifyHost($item->eventid, $userid)) {
 					$numTix = sizeof($tickets);
 					$winningNum = rand(0,$numTix);
 					$ticket = $tickets[$winningNum];

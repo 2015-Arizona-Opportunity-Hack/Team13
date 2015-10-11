@@ -84,7 +84,7 @@
 			}
 			else {
 				$array = array('success' => false,
-					'event' => $event);
+					'message' => 'Failed to find event');
 				return json_encode($array);
 			}
 		}
