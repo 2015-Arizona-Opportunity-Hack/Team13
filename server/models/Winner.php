@@ -36,21 +36,25 @@
 			$winner = new Winner();
 			$winner->itemid = $itemid;
 			$winner->participantid = $participantid;
+			$won = Winner::where('itemid',$itemid)->first();
+			if ($won == null) {
+				$saved = $winner->save();
 
-			$saved = $winner->save();
+				if($saved) {
+					$array = array('success' => true,
+						'item' => $winner);
 
-			if($saved) {
-				$array = array('success' => true,
-					'item' => $winner);
+					return json_encode($array);
+				} else {
+					$array = array('success' => false,
+						'message' => 'Failed to pick winner');
 
-				return json_encode($array);
-			} else {
-				$array = array('success' => false,
-					'message' => 'Failed to pick winner');
-
-				return json_encode($array);	
+					return json_encode($array);	
+				}
 			}
-			
+			else {
+				echo "ITEM HAS ALREADY BEEN WON!!!";
+			}
 		}
 	}
 ?>
