@@ -115,7 +115,7 @@ a:focus {
 }
 
 .navbar-custom .nav li.active a {
-    background-color: rgba(255,255,255,.3);
+    background-color: #3183CE;
 }
 
 .navbar-custom .nav li.active a:hover {
@@ -149,7 +149,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background:  url(../img/raffle-tickets4.jpg) no-repeat bottom center scroll;
+    background:  url(../img/raffle-tickets3.jpg) no-repeat center center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -177,7 +177,7 @@ a:focus {
     }
 
     .intro .intro-body .intro-text {
-        font-size: 22px;
+        font-size: 23px;
     }
 }
 
@@ -275,7 +275,7 @@ a:focus {
 }
 
 .content-section {
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .download-section {
@@ -298,7 +298,8 @@ a:focus {
 
 @media(min-width:767px) {
     .content-section {
-        padding-top: 250px;
+        padding-top: 120px;
+        padding-bottom: 120px;
     }
 
     .download-section {
@@ -396,6 +397,30 @@ body {
 .form-group {
     margin-bottom: 8px;
 }
+.row {
+    margin-bottom:20px;
+}
 #feedbackForm {
      font-size: 12px;
+}
+
+#rememberMe {
+    color:black;
+}
+
+.form-group.row {
+    margin : 0;
+}
+
+.black {
+    color:#fff;
+}
+
+.nopad {
+    margin: 0;
+    color: white;
+}
+
+#projects-carousel > div > div.item.active > div > div.row.project-text > div > h3 {
+color: #000;
 }

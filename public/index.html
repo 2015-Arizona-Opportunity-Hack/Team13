@@ -24,6 +24,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,10 +60,10 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#product">Product</a>
+                        <a class="page-scroll" href="#portfolio">Product</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#footers">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -78,13 +79,12 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Go Raffle Me</h1>
-                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
+                        <p class="intro-text">An interactive online ticket raffling system.<br>Your solution for incentive crowd sourcing.</p>
                         <a href="#about" class="btn-circle page-scroll">
                             <i class="fa fa-ticket"></i>
                             Participant
                         </a>
-
-                        <a href="#about" class="btn-circle page-scroll">Host
+                        <a class="btn-circle page-scroll login-form" href="#login-form">Host
                             <i class="fa fa-ticket"></i>
                         </a>
                     </div>
@@ -93,25 +93,137 @@
         </div>
     </header>
 
+        <!-- Login Form -->
+        <div id="login-form" class="container mfp-hide">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form" data-toggle="validator" data-disable="false">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="login-username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" value="" placeholder="username or email">                                        
+                            </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="login-password" type="password" class="form-control" data-validation="required length" data-validation-length="max100" name="password" placeholder="password">
+                            </div>
+                                    
+                            <div class="input-group">
+                                <div id="rememberMe">
+                                    <label>
+                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                </label>
+                                </div>
+                            </div>
+                            <div style="margin-top:10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12 controls">
+                                    <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-success">Login</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >Don't have an account! 
+                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    Sign Up Here
+                                </a>
+                                </div>
+                            </div>
+                        </div>    
+                    </form>     
+                </div>                     
+            </div>  
+        </div>
+        <!-- SignUp Form -->
+        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Sign Up</div>
+                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+                        </div>  
+                        <div class="panel-body" >
+                            <form id="signupform" class="form-horizontal" role="form">
+                                
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>                                    
+                
+                                <div class="form-group row-fluid row">
+                                    <label for="firstname" class="control-label">First Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="firstname" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="control-label">Last Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="lastname" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="control-label">Email</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required email" name="email" placeholder="Email Address">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="control-label">Password</label>
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control" data-validation="strength" data-validation-strength="1" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-4 col-md-9">
+                                        <button style="margin-top:20px"id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <span style="margin-left:8px;">or</span>  
+                                    </div>
+                                </div>
+                                 
+                            </form>
+                         </div>
+                    </div> 
+         </div> 
+        </div>
+    
+
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Grayscale</h2>
+                <h2 class="black">About Go Raffle Me</h2>
                 <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
                 <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
                 <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
             </div>
+
+            <div class="project-button-container col-lg-12 center-block">
+                                <a href="https://github.com/Opportunity-Hack-2015-Arizona/Team13/" target="_blank" class="btn-circle">View Project</a>
+                            </div>
         </div>
     </section>
 
 
-  <!-- Product Section -->
-   <section id="product" class="container content-section text-center">
+<section id="portfolio" class="screen content-section">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center section-header dark">
-                    <h2>The Product</h2>
+                    <h2>Our Work</h2>
                 </div>
             </div>
         </div>
@@ -128,62 +240,48 @@
                 <div class="item">
                     <div class="project-item">
                         <div class="row project-text">
-                            <div class="col-md-3">
-                                <h3 class="project-title">
-                                    CleanCut Theme
+                            <div class="col-md-12">
+                              
+                                <h3 class="nopad text-center">
+                                    Bootsrap<br>Carnival
                                 </h3>
 
-                                <p class="project-subtitle">
-                                    A beautiful Bootstrap theme
-                                </p>
-                            </div>
+                                <br>
 
-                            <div class="project-description col-md-7">
-                                <p class="lead">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
+                                <p class="nopad text-center">
+                                    Handcrafted Bootstrap themes
                                 </p>
-                            </div>
-
-                            <div class="project-button-container col-md-2">
-                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
                             </div>
                         </div>
 
                         <div class="row project-image">
                             <div class="col-md-12 text-center">
-                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                                <img src="img/test.png" alt="" class="img-responsive">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="item">
+              <div class="item">
                     <div class="project-item">
                         <div class="row project-text">
-                            <div class="col-md-3">
-                                <h3 class="project-title">
-                                    Engem.me
+                            <div class="col-md-12">
+                              
+                                <h3 class="nopad text-center">
+                                    Bootsrap<br>Carnival
                                 </h3>
 
-                                <p class="project-subtitle">
-                                    Better LinkedIn Profiles
-                                </p>
-                            </div>
+                                <br>
 
-                            <div class="project-description col-md-7">
-                                <p class="lead">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
+                                <p class="nopad text-center">
+                                    Handcrafted Bootstrap themes
                                 </p>
-                            </div>
-
-                            <div class="project-button-container col-md-2">
-                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
                             </div>
                         </div>
 
                         <div class="row project-image">
                             <div class="col-md-12 text-center">
-                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                                <img src="img/test.png" alt="" class="img-responsive">
                             </div>
                         </div>
                     </div>
@@ -192,30 +290,23 @@
                 <div class="item active">
                     <div class="project-item">
                         <div class="row project-text">
-                            <div class="col-md-3">
-                                <h3 class="project-title">
-                                    BootsrapCarnival
+                            <div class="col-md-12">
+                              
+                                <h3 class="nopad text-center">
+                                    Bootsrap<br>Carnival
                                 </h3>
 
-                                <p class="project-subtitle">
+                                <br>
+
+                                <p class="nopad text-center">
                                     Handcrafted Bootstrap themes
                                 </p>
-                            </div>
-
-                            <div class="project-description col-md-7">
-                                <p class="lead">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
-                                </p>
-                            </div>
-
-                            <div class="project-button-container col-md-2">
-                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
                             </div>
                         </div>
 
                         <div class="row project-image">
                             <div class="col-md-12 text-center">
-                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                                <img src="img/test.png" alt="" class="img-responsive">
                             </div>
                         </div>
                     </div>
@@ -230,7 +321,12 @@
                 <i class="fa fa-chevron-right"></i>
             </a>
         </div>
+
+        
+    </div>
 </section>
+
+
 
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
@@ -238,7 +334,7 @@
         <div class="container">
       <div id="contact_form" class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h2>Contact Us</h2>
+          <h2 class="black">Contact Us</h2>
           <form role="form" id="feedbackForm" data-toggle="validator" data-disable="false">
             <div class="form-group">
               <label class="control-label" for="name">Name *</label>
@@ -295,14 +391,17 @@
           </form>
         </div><!--/span-->
       </div><!--/row-->
-      <hr>
+      
+
     </div><!--/.container-->
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container text-center">
+
+        <div id="footers" class="container text-center">
+            <hr>
             <p>Copyright &copy; Go Raffle Me 2015</p>
         </div>
     </footer>
@@ -330,6 +429,9 @@
 
     <!-- Sweet Alert -->
     <script src="js/sweetalert.min.js"></script> 
+
+    <!-- Magnific Popup -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
 
 </body>
 
