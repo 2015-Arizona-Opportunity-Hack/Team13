@@ -95,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div>
-                      <center><a href="#" class="btn btn-default btn-flat">Sign out</a></center>
+                      <center><a id="signOut" href="#" class="btn btn-default btn-flat">Sign Out</a></center>
                     </div>
                   </li>
                 </ul>

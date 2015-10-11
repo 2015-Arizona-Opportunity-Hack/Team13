@@ -1,5 +1,5 @@
 $(function() {
-	access_token = $.cookie("token");
+	var access_token = $.cookie("token");
 
 	getName();
     getEvents();
@@ -11,6 +11,8 @@ $(function() {
           return false; // Will stop the submission of the form
         }
     });
+
+    $("#signOut").click(signOut);
 
     function getName() {
     	$.ajax({
@@ -81,5 +83,9 @@ $(function() {
 	            
 	        }
 	    });
+    }
+
+    function signOut() {
+    	window.location.href = "../";
     }
 });
