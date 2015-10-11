@@ -34,9 +34,21 @@
 		public function addEvent($hostid, $name, $startdate, $enddate, $addr1, $addr2, $city, $state, $zip, $islocal, $isvirtual, $ticketprice, $description) {
 
 			$event = new Event();
-			
-			//in progress//
-			$saved = $host->save();//insert
+			$event->hostid = $hostid;
+			$event->name = $name;
+			$event->startdate = $startdate;
+			$event->enddate = $enddate;
+			$event->addr1 = $addr1;
+			$event->addr2 = $addr2;
+			$event->city = $city;
+			$event->state = $state;
+			$event->zip = $zip;
+			$event->islocal = $islocal;
+			$event->isvirtual = $isvirtual;
+			$event->ticketprice = $ticketprice;
+			$event->description = $description;
+
+			$save = $event->save();
 
 			if($saved) {
 				$array = array('success' => true,
