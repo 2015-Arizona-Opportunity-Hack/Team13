@@ -15,7 +15,7 @@
 			echo $json;
 		});
 		//get all tickets for an event//
-		$app->get('/event/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
+		$app->get('/event/:eventid/', function($eventid) use ($app, $resourceServer) {
 			$ticket = new Ticket();
 			$json = $ticket->getTickets($eventid);
 			echo $json;

@@ -6,11 +6,12 @@ $(document).ready(function() {
   valueNames: [ 'name', 'born' ]
 };
 
+
+
 var userList = new List('users', options);
 /* ----Objects Start---- */
 /* Host */
-function host(id, firstName, lastName, email, phone, userName, password) {
-	this.id = id;
+function host(firstName, lastName, email, phone, userName, password) {
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.email = email;
@@ -20,8 +21,7 @@ function host(id, firstName, lastName, email, phone, userName, password) {
 }
 
 /* Event */
-function event(id, hostId, name, startDate, endDate, addr1, addr2, city, state, zip, isLocal, isVirtual, ticketPrice, description) {
-	this.id = id;
+function event(hostId, name, startDate, endDate, addr1, addr2, city, state, zip, isLocal, isVirtual, ticketPrice, description) {
 	this.hostId = hostId;
 	this.name = name;
 	this.startDate = startDate;
@@ -38,8 +38,7 @@ function event(id, hostId, name, startDate, endDate, addr1, addr2, city, state, 
 }
 
 /* Item */
-function item(id, eventId, name, description, pathToPic, storePrice) {
-	this.id = id;
+function item(eventId, name, description, pathToPic, storePrice) {
 	this.eventId = eventId;
 	this.name = name;
 	this.description = description;
@@ -48,15 +47,13 @@ function item(id, eventId, name, description, pathToPic, storePrice) {
 }
 
 /* Order */
-function order(id, orderNumber, ticketQuantity) {
-	this.id = id;
+function order(orderNumber, ticketQuantity) {
 	this.orderNumber = orderNumber;
 	this.ticketQuantity = ticketQuantity;
 }
 
 /* Participant */
 function participant(id, eventId, name, email, phone, orderId) {
-	this.id = id;
 	this.eventId = eventId;
 	this.name = name;
 	this.email = email;
@@ -66,7 +63,6 @@ function participant(id, eventId, name, email, phone, orderId) {
 
 /* Ticket */
 function ticket(id, particiapntId, eventId, orderId, confirmation) {
-	this.id = id;
 	this.particiapntId = particiapntId;
 	this.eventId = eventId;
 	this.orderId = orderId;
@@ -75,7 +71,6 @@ function ticket(id, particiapntId, eventId, orderId, confirmation) {
 
 /* Winner */
 function winner(id, itemId, participantId) {
-	this.id = id;
 	this.itemId = itemId;
 	thi.particiapntId = particiapntId;
 }
@@ -86,30 +81,49 @@ var loginForm = $("#loginform");
 var signUpForm = $("#signupform");
 var contactForm = $("#feedbackform");
 var participantForm = $("#participantform");
+var paypalForm = $("#paypalform");
 /*----Form Elements End----*/
 
 /*----Functions----*/
 function login() {
-	var data = loginForm.serializeArray();
-    $.ajax({
-        type: 'POST',
-        url: 'Login API',
-        data: data,
-        dataType: 'JSON',
-        success: function(json) {
-            console.log(json);
-        }
-    });
+	var username = $("#login-username").val();
+	var password = $("#login-password").val();
+	$.ajax({
+		type: 'POST',
+		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
+		url: 'server/index.php/access_token',
+		success: function(json) {
+			console.log(json);
+			//token = json.access_token;
+			$.cookie('token', json.access_token);
+			console.log($.cookie('token'));
+			window.location.href = "dashboard/index.php";
+		},
+		error: function() {
+			sweetAlert("Invalid Username or Password", "Please try again.", "error");
+		}
+	});
 }
 function signUp() {
 	var data = signUpForm.serializeArray();
     $.ajax({
         type: 'POST',
-        url: 'Sign Up API',
+        url: 'server/index.php/host',
         data: data,
         dataType: 'JSON',
         success: function(json) {
             console.log(json);
+            if (json.success == true) {
+            	swal("Successfully Registered!", "Sign in with new credentials.", "success")
+    		}
+    		else if (json.success == false) {
+    			sweetAlert(json.message, "Please try again.", "error");
+    		}
+            $('#signupbox').hide(); 
+            $('#loginbox').show();
+        },
+        error: function() {
+        	sweetAlert("Invalid Registration", "Please try again.", "error");
         }
     });
 }
@@ -129,6 +143,23 @@ function submitContact() {
         }
     });
 }
+function submitPayPal() {
+	var ticketTotal = $("#tickets").val() * 3.50;
+	var data = paypalForm.serializeArray();
+    $.ajax({
+        type: 'POST',
+        url: 'PayPal API',
+        data: data,
+        dataType: 'JSON',
+        success: function(json) {
+            console.log(json);
+        },
+        error: function() {
+        	//Temporary
+        	swal("Ticket Total: $"+ ticketTotal, "Redirecting to PayPal...", "success");
+        }
+    });
+}
 function goToEvent() {
 	var eventId = $("#eventId").val();
 	$.ajax({
@@ -145,25 +176,6 @@ function goToEvent() {
 		},
 		error: function() {
 			sweetAlert("Oops...", "Server Error, Event Id did not send!", "error");
-		}
-	});
-}
-function login() {
-	var username = $("#login-username").val();
-	var password = $("#login-password").val();
-	$.ajax({
-		type: 'POST',
-		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
-		url: 'server/index.php/access_token',
-		success: function(json) {
-			console.log(json);
-			//token = json.access_token;
-			$.cookie('token', json.access_token);
-			console.log($.cookie('token'));
-			window.location.href = "dashboard/index.php";
-		},
-		error: function() {
-			sweetAlert("Invalid Username or Password", "Please try again.", "error");
 		}
 	});
 }
@@ -196,6 +208,14 @@ $.validate({
     modules : 'location, date, security, file',
     onSuccess : function() {
     goToEvent();
+        return false; // Will stop the submission of the form
+    }
+ });
+$.validate({
+	form: paypalForm, 
+    modules : 'location, date, security, file',
+    onSuccess : function() {
+    submitPayPal();
         return false; // Will stop the submission of the form
     }
  });
