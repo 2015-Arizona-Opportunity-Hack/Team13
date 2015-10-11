@@ -77,7 +77,8 @@ function winner(id, itemId, participantId) {
 /*----Form Elements----*/
 var loginForm = $("#loginform");
 var signUpForm = $("#signupform");
-var contactForm = $("#feedbackForm");
+var contactForm = $("#feedbackform");
+var participantForm = $("#participantform");
 /*----Form Elements End----*/
 
 /*----Functions----*/
@@ -114,13 +115,31 @@ function submitContact() {
         dataType: 'JSON',
         success: function(json) {
             console.log(json);
-            if(json.success == true) {
-            	swal("Feedback submitted", "We will contact you shortly!", "success");
-            } else {
-                sweetAlert("Feedback not sent!", "Something went wrong!", "error");
-            }
+            swal("Feedback submitted", "We will contact you shortly!", "success");
+        },
+        error: function() {
+        	sweetAlert("Feedback not sent!", "Something went wrong!", "error");
         }
     });
+}
+function goToEvent() {
+	var eventId = $("#eventId").val();
+	$.ajax({
+		type: 'GET',
+		url: '../server/index.php/event/id/'+eventId,
+		success: function(json) {
+			console.log(json);
+			if (eventId == json.event.id) {
+				window.location.href = "http://localhost/Team13/public/event.html?id=" + eventId;
+			}
+			else {
+				sweetAlert("Oops...", "Event Id doesn't exist!", "error");
+			}
+		},
+		error: function() {
+			sweetAlert("Oops...", "Server Error, Event Id did not send!", "error");
+		}
+	});
 }
 /*----Functions End----*/
 
@@ -143,6 +162,14 @@ $.validate({
     modules : 'location, date, security, file',
     onSuccess : function() {
     submitContact();
+        return false; // Will stop the submission of the form
+    }
+ });
+$.validate({
+	form: participantForm, 
+    modules : 'location, date, security, file',
+    onSuccess : function() {
+    goToEvent();
         return false; // Will stop the submission of the form
     }
  });
