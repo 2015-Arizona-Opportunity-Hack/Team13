@@ -61,9 +61,21 @@
 					'items' => $items);
 
 				return json_encode($array);
+
+
 			} 
 			else {
-				echo "NO ITEMS!";
+				return "NO ITEMS!";
+			}
+		}
+
+		public function getItem($itemid) {
+			$item = Item::where('id', $itemid)->first();
+			if ($item != null) {
+				return $item;	
+			} 
+			else {
+				return "Does not exist!";
 			}
 		}
 	}

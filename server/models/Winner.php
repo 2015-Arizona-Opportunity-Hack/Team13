@@ -32,9 +32,29 @@
 			$this->database = Database::getInstance();
 		}
 
-		public function pickWinner($itemid) {
-			$item = new Item();
-			$tickets = $item->getTickets();
+		public function pickWinner($itemid, $participantid) {
+			$winner = new Winner();
+			$winner->itemid = $itemid;
+			$winner->participantid = $participantid;
+			$won = Winner::where('itemid',$itemid)->first();
+			if ($won == null) {
+				$saved = $winner->save();
+
+				if($saved) {
+					$array = array('success' => true,
+						'item' => $winner);
+
+					return json_encode($array);
+				} else {
+					$array = array('success' => false,
+						'message' => 'Failed to pick winner');
+
+					return json_encode($array);	
+				}
+			}
+			else {
+				return "ITEM HAS ALREADY BEEN WON!!!";
+			}
 		}
 	}
 ?>

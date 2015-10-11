@@ -1,160 +1,190 @@
-
-
-
 .isotope-item {
-  z-index: 2;
+    z-index: 2;
 }
 
 .isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .isotope,
 .isotope .isotope-item {
-  /* change duration value to whatever you like */
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  -ms-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  transition-duration: 0.8s;
+    /* change duration value to whatever you like */
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    -ms-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    transition-duration: 0.8s;
 }
 
 .isotope {
-  -webkit-transition-property: height, width;
-  -moz-transition-property: height, width;
-  -ms-transition-property: height, width;
-  -o-transition-property: height, width;
-  transition-property: height, width;
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    -ms-transition-property: height, width;
+    -o-transition-property: height, width;
+    transition-property: height, width;
 }
 
 .isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-  -moz-transition-property: -moz-transform, opacity;
-  -ms-transition-property: -ms-transform, opacity;
-  -o-transition-property: -o-transform, opacity;
-  transition-property: transform, opacity;
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    -ms-transition-property: -ms-transform, opacity;
+    -o-transition-property: -o-transform, opacity;
+    transition-property: transform, opacity;
 }
 
+
 /**** disabling Isotope CSS3 transitions ****/
+
 .isotope.no-transition,
 .isotope.no-transition .isotope-item,
 .isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-  -moz-transition-duration: 0s;
-  -ms-transition-duration: 0s;
-  -o-transition-duration: 0s;
-  transition-duration: 0s;
+    -webkit-transition-duration: 0s;
+    -moz-transition-duration: 0s;
+    -ms-transition-duration: 0s;
+    -o-transition-duration: 0s;
+    transition-duration: 0s;
 }
-
 
 #portfolio {
-  background: #3183CE;
-  min-height: 620px;
+    background: #3183CE;
+    min-height: 620px;
 }
-#portfolio h1, #portfolio h2, #portfolio h3, #portfolio h4, #portfolio h5, #portfolio h6 {
-  color: #f0f0f0;
+
+#portfolio h1,
+#portfolio h2,
+#portfolio h3,
+#portfolio h4,
+#portfolio h5,
+#portfolio h6 {
+    color: #f0f0f0;
 }
+
 #portfolio .project-text {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
+
 #portfolio .project-button-container {
-  margin-top: 8px;
+    margin-top: 8px;
 }
+
 #portfolio .project-title {
-  padding: 0;
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.5px;
-  font-weight: 700;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
 }
+
 #portfolio .project-subtitle {
-  color: #a8a8a8;
-  font-style: italic;
-  font-size: 14px;
+    color: #a8a8a8;
+    font-style: italic;
+    font-size: 14px;
 }
+
 #portfolio .project-description .lead {
-  color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  letter-spacing: 0.5px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
 }
+
 #portfolio .section-header {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
+
 #portfolio .project-image img {
-  margin: 0 auto;
-  display: block;
+    margin: 0 auto;
+    display: block;
 }
 
 .screen {
-  min-height: 650px;
-  background: #fff;
-  margin: 0;
+    min-height: 650px;
+    background: #fff;
+    margin: 0;
 }
 
 .image-bg .container {
-  position: relative;
-  z-index: 50;
-  
+    position: relative;
+    z-index: 50;
 }
 
 #projects-carousel > div > div.item.active > div > div.row.project-image > div > img {
-  max-height: 600px;
+    max-height: 600px;
 }
+
 
 /*========================================
 =            DARK BG CAROUSEL            =
 ========================================*/
-#projects-carousel .carousel-inner, #tour-carousel .carousel-inner {
-  width: 90%;
-  margin: 0 auto;
+
+#projects-carousel .carousel-inner,
+#tour-carousel .carousel-inner {
+    width: 90%;
+    margin: 0 auto;
 }
-#projects-carousel .carousel-control, #tour-carousel .carousel-control {
-  background: none;
-}
-#projects-carousel .carousel-control.left, #tour-carousel .carousel-control.left {
-  left: -80px;
-}
-#projects-carousel .carousel-control.right, #tour-carousel .carousel-control.right {
-  right: -60px;
-}
-#projects-carousel .carousel-control i, #tour-carousel .carousel-control i {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  display: inline-block;
-  font-size: 1.5em;
-}
-@media (max-width: 1160px) {
-  #projects-carousel .carousel-inner, #tour-carousel .carousel-inner {
-    width: 80%;
-  }
-  #projects-carousel .carousel-control, #tour-carousel .carousel-control {
+
+#projects-carousel .carousel-control,
+#tour-carousel .carousel-control {
     background: none;
-  }
-  #projects-carousel .carousel-control.left, #tour-carousel .carousel-control.left {
-    left: -30px;
-  }
-  #projects-carousel .carousel-control.right, #tour-carousel .carousel-control.right {
-    right: -10px;
-  }
-  #projects-carousel .carousel-control i, #tour-carousel .carousel-control i {
+}
+
+#projects-carousel .carousel-control.left,
+#tour-carousel .carousel-control.left {
+    left: -80px;
+}
+
+#projects-carousel .carousel-control.right,
+#tour-carousel .carousel-control.right {
+    right: -60px;
+}
+
+#projects-carousel .carousel-control i,
+#tour-carousel .carousel-control i {
     position: absolute;
     top: 50%;
     z-index: 5;
     display: inline-block;
     font-size: 1.5em;
-  }
 }
 
+@media (max-width: 1160px) {
+    #projects-carousel .carousel-inner,
+    #tour-carousel .carousel-inner {
+        width: 80%;
+    }
+    #projects-carousel .carousel-control,
+    #tour-carousel .carousel-control {
+        background: none;
+    }
+    #projects-carousel .carousel-control.left,
+    #tour-carousel .carousel-control.left {
+        left: -30px;
+    }
+    #projects-carousel .carousel-control.right,
+    #tour-carousel .carousel-control.right {
+        right: -10px;
+    }
+    #projects-carousel .carousel-control i,
+    #tour-carousel .carousel-control i {
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        display: inline-block;
+        font-size: 1.5em;
+    }
+}
+
+
 /*-----  End of DARK BG CAROUSEL  ------*/
+
 @media (max-width: 800px) {
-  #about, #services {
-    margin-bottom: 40px;
-  }
+    #about,
+    #services {
+        margin-bottom: 40px;
+    }
 }
