@@ -86,20 +86,28 @@ var loginForm = $("#loginform");
 var signUpForm = $("#signupform");
 var contactForm = $("#feedbackform");
 var participantForm = $("#participantform");
+var paypalForm = $("#paypalform");
 /*----Form Elements End----*/
 
 /*----Functions----*/
 function login() {
-	var data = loginForm.serializeArray();
-    $.ajax({
-        type: 'POST',
-        url: 'Login API',
-        data: data,
-        dataType: 'JSON',
-        success: function(json) {
-            console.log(json);
-        }
-    });
+	var username = $("#login-username").val();
+	var password = $("#login-password").val();
+	$.ajax({
+		type: 'POST',
+		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
+		url: 'server/index.php/access_token',
+		success: function(json) {
+			console.log(json);
+			//token = json.access_token;
+			$.cookie('token', json.access_token);
+			console.log($.cookie('token'));
+			window.location.href = "dashboard/index.php";
+		},
+		error: function() {
+			sweetAlert("Invalid Username or Password", "Please try again.", "error");
+		}
+	});
 }
 function signUp() {
 	var data = signUpForm.serializeArray();
@@ -129,6 +137,21 @@ function submitContact() {
         }
     });
 }
+function submitPayPal() {
+	var data = paypalForm.serializeArray();
+    $.ajax({
+        type: 'POST',
+        url: 'PayPal API',
+        data: data,
+        dataType: 'JSON',
+        success: function(json) {
+            console.log(json);
+        },
+        error: function() {
+        	sweetAlert("Error redirecting to PayPal!", "Something went wrong!", "error");
+        }
+    });
+}
 function goToEvent() {
 	var eventId = $("#eventId").val();
 	$.ajax({
@@ -145,25 +168,6 @@ function goToEvent() {
 		},
 		error: function() {
 			sweetAlert("Oops...", "Server Error, Event Id did not send!", "error");
-		}
-	});
-}
-function login() {
-	var username = $("#login-username").val();
-	var password = $("#login-password").val();
-	$.ajax({
-		type: 'POST',
-		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
-		url: 'server/index.php/access_token',
-		success: function(json) {
-			console.log(json);
-			//token = json.access_token;
-			$.cookie('token', json.access_token);
-			console.log($.cookie('token'));
-			window.location.href = "dashboard/index.php";
-		},
-		error: function() {
-			sweetAlert("Invalid Username or Password", "Please try again.", "error");
 		}
 	});
 }
@@ -196,6 +200,14 @@ $.validate({
     modules : 'location, date, security, file',
     onSuccess : function() {
     goToEvent();
+        return false; // Will stop the submission of the form
+    }
+ });
+$.validate({
+	form: paypalForm, 
+    modules : 'location, date, security, file',
+    onSuccess : function() {
+    submitPayPal();
         return false; // Will stop the submission of the form
     }
  });
