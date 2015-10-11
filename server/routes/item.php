@@ -26,7 +26,7 @@
 
 		});
 
-		$app->get('/:eventid', $authorize(), function($eventid) use ($app, $resourceServer) {
+		$app->get('/:eventid/', $authorize(), function($eventid) use ($app, $resourceServer) {
 			$item = new Item();
 			$event = new Event();
 			$userid = $resourceServer->getAccessToken()->getSession()->getOwnerId();

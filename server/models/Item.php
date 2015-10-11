@@ -56,7 +56,12 @@
 
 		public function getItems($eventid) {
 			$items = Item::where('eventid', $eventid)->get();
-			echo $items;
+			if ($items != null) {
+				echo $items;	
+			} 
+			else {
+				echo "NO ITEMS!";
+			}
 		}
 	}
 ?>
