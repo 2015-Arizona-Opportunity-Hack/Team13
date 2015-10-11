@@ -34,8 +34,9 @@
 			echo $json;
 		});
 
-		$app->get('/host/:hostid/', $authorize(), function($hostid) use ($app, $resourceServer) {
-			
+		$app->get('/host/', $authorize(), function() use ($app, $resourceServer) {
+			$hostid = $resourceServer->getAccessToken()->getSession()->getOwnerId();
+
 			$event = new Event();
 
 			$json = $event->getHostEvents($hostid);
