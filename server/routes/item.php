@@ -43,11 +43,26 @@
 
 		$app->post('/winner/', $authorize(), function() use ($app, $resourceServer) {
 			$winner = new Winner();
+			$item = new Item();
 			$itemid = $app->request->post('itemid');
-			
-			$json = $winner->pickWinner($itemid);
-
-			echo $json;
+			$item = $item->getItem($itemid);
+			if ($item != null) {
+				$ticket = new Ticket();
+				$tickets = $ticket->getTickets($item->eventid);
+				if ($tickets != null) {
+					$numTix = sizeof($tickets);
+					$winningNum = rand(0,$numTix);
+					$ticket = $tickets[$winningNum];
+					$json = $winner->pickWinner($itemid, $ticket->participantid);
+					echo $json;
+				}
+				else {
+					echo "NO TICKETS HAVE BEEN PURCHASED!";
+				}
+			}
+			else {
+				echo "NO ITEM FOUND!";
+			}	
 		});
 
 	});
