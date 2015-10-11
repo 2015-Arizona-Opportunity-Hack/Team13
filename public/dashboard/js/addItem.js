@@ -26,7 +26,7 @@ $(function() {
 	            	console.log(json);
 
 	            	$.each($('span#fullname'), function() {
-					    $(this).html(json.firstname + ' ' + json.lastname);
+					    $(this).html(json.host.firstname + ' ' + json.host.lastname);
 					});
 
 	            }
@@ -123,10 +123,11 @@ $(function() {
 		    "Authorization": "Bearer " + access_token
 		  	},
 	        success: function(json) {
+	        	console.log(json);
 	            if(json.success != false) {
-	            	$('#itemName').val(json.name);
-	            	$('#itemDescription').val(json.description);
-	            	$('#itemPrice').val(json.storeprice);
+	            	$('#itemName').val(json.item.name);
+	            	$('#itemDescription').val(json.item.description);
+	            	$('#itemPrice').val(json.item.storeprice);
 	            	$('#viewitem').modal('show');
 	            }
 	        }
@@ -134,7 +135,37 @@ $(function() {
     }
 
     function addItem() {
-
+    	var item = {
+    		eventid: param('id'),
+    		name:  $("#iName").val(),
+    		storeprice: $("#iPrice").val(),
+    		description: $("#iDescription").val()
+    	};
+    	console.log(item);
+    	$.ajax({
+	        type: 'POST',
+	        url: '../../server/item/',
+	        dataType: 'JSON',
+	        data:item,
+	        headers: {
+		    "Authorization": "Bearer " + access_token
+		  	},
+	        success: function(json) {
+	            if(json.success != false) {
+	            	$('#success').modal("show");
+	            	getItems();
+	            	setTimeout(function(){
+					   window.location.reload(1);
+					}, 3000);
+	            }
+	            else {
+	            	$('#fail').modal("show");
+	            }
+	        },
+	        error: function() {
+	        	$('#fail').modal("show");
+	        }
+	    });
     }
 
     function param(name) {
