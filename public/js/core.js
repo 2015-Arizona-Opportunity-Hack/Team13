@@ -1,3 +1,4 @@
+token = "";
 
 $(document).ready(function() {
 /* ----Objects Start---- */
@@ -130,7 +131,7 @@ function goToEvent() {
 		success: function(json) {
 			console.log(json);
 			if (eventId == json.event.id) {
-				window.location.href = "http://localhost/Team13/public/event.html?id=" + eventId;
+				window.location.href = "event.html?id=" + eventId;
 			}
 			else {
 				sweetAlert("Oops...", "Event Id doesn't exist!", "error");
@@ -138,6 +139,25 @@ function goToEvent() {
 		},
 		error: function() {
 			sweetAlert("Oops...", "Server Error, Event Id did not send!", "error");
+		}
+	});
+}
+function login() {
+	var username = $("#login-username").val();
+	var password = $("#login-password").val();
+	$.ajax({
+		type: 'POST',
+		data: {grant_type: 'password', client_id: 'testclient', client_secret: '', username:username, password:password},
+		url: '../server/index.php/access_token',
+		success: function(json) {
+			console.log(json);
+			//token = json.access_token;
+			$.cookie('token', json.access_token);
+			console.log($.cookie('token'));
+			window.location.href = "dashboard";
+		},
+		error: function() {
+			sweetAlert("Invalid Username or Password", "Please try again.", "error");
 		}
 	});
 }
