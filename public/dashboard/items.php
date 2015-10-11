@@ -242,7 +242,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
+                    <input id="itemName"type="text" class="form-control" name="name" data-validation="required length" data-validation-length="max100">
                   </div>
                 </div>
               </div><!-- /.box-body -->
@@ -250,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                   <label for="description" class="col-sm-2 control-label">Description</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max100">
+                    <input id="itemDescription" type="text" class="form-control" name="description" data-validation="required length" data-validation-length="max100">
                   </div>
                 </div>
               </div><!-- /.box-body -->
@@ -258,7 +258,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                   <label for="storeprice" class="col-sm-2 control-label">Store8 Price</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="storeprice" data-validation="required number" data-validation-allowing="float">
+                    <input id="itemPrice" type="text" class="form-control" name="storeprice" data-validation="required number" data-validation-allowing="float">
                   </div>
                 </div>
               </div><!-- /.box-body -->

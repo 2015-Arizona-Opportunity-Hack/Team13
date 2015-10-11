@@ -1,5 +1,5 @@
 $(function() {
-	//token = 'zis9DVotLppy3qhW7MuqMSwQKtbTzoevwsUZUFBt';
+	access_token = $.cookie("token");
 
 	getName();
     getEvents();
@@ -17,7 +17,7 @@ $(function() {
     function getName() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/host',
+	        url: '../../server/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -38,7 +38,7 @@ $(function() {
     function getEvents() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/event/host',
+	        url: '../../server/event/host',
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -58,7 +58,7 @@ $(function() {
     function getEvent() {
     	$.ajax({
 	        type: 'GET',
-	        url: '../server/event/id/' + param('id'),
+	        url: '../../server/event/id/' + param('id'),
 	        dataType: 'JSON',
 	        headers: {
 		    "Authorization": "Bearer " + access_token
@@ -66,14 +66,14 @@ $(function() {
 	        success: function(json) {
 	        	console.log(json);
 	            if(json.success != false) {
-	            	$('input[name="name"]').val(json.name);
-	            	$('input[name="addr1"]').val(json.addr1);
-	            	$('input[name="addr2"]').val(json.addr2);
-	            	$('input[name="city"]').val(json.city);
-	            	$('input[name="state"]').val(json.state);
-	            	$('input[name="zip"]').val(json.zip);
-	            	$('input[name="ticketprice"]').val(json.ticketprice);
-	            	$('textarea[name="description"]').html(json.description);
+	            	$('input[name="name"]').val(json.event.name);
+	            	$('input[name="addr1"]').val(json.event.addr1);
+	            	$('input[name="addr2"]').val(json.event.addr2);
+	            	$('input[name="city"]').val(json.event.city);
+	            	$('input[name="state"]').val(json.event.state);
+	            	$('input[name="zip"]').val(json.event.zip);
+	            	$('input[name="ticketprice"]').val(json.event.ticketprice);
+	            	$('textarea[name="description"]').html(json.event.description);
 	            	
 	            }
 	        }
