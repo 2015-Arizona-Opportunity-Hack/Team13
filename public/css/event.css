@@ -3,7 +3,7 @@ body {
     height: 100%;
     font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #000;
-    background-color: #808080;
+    background-color: #F0F8FF;
 }
 
 html {
@@ -90,7 +90,7 @@ h2 {
 .list {
   font-family:sans-serif;
   margin:0;
-  padding:20px 0 0;
+  padding:0px 0 0;
 }
 .list > li {
   display:block;
@@ -180,15 +180,48 @@ input:focus {
 }
 
 .list {
-    height: 200px;
+    height: 190px;
+     overflow-y: scroll;
+}
+
+.list2{
+    height: 140px;
      overflow-y: scroll;
 }
 
 .blueback {
-    background: #3183CE
+    background: #F0F8FF;
 }
 
 .greyback {
-    background: gray;
+    background: white;
 }
+
+footer {
+    padding: 50px 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+footer p {
+    margin: 0;
+}
+
+.behind {
+    background: black;
+}
+
+
+@media (max-width: 760px) {
+.search {
+    width: 100%;
+}
+
+.sort {
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+    }
 
