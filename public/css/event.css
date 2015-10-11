@@ -24,3 +24,20 @@ h6 {
     letter-spacing: 1px;
 }
 
+.title_event {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+    color: #000;
+}
+
+.CattoBorderRadius
+{
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
