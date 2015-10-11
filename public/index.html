@@ -24,6 +24,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,8 +84,7 @@
                             <i class="fa fa-ticket"></i>
                             Participant
                         </a>
-
-                        <a href="#about" class="btn-circle page-scroll">Host
+                        <a class="btn-circle page-scroll login-form" href="#login-form">Host
                             <i class="fa fa-ticket"></i>
                         </a>
                     </div>
@@ -93,12 +93,119 @@
         </div>
     </header>
 
+        <!-- Login Form -->
+        <div id="login-form" class="container mfp-hide">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal" role="form" data-toggle="validator" data-disable="false">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="login-username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" value="" placeholder="username or email">                                        
+                            </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="login-password" type="password" class="form-control" data-validation="required length" data-validation-length="max100" name="password" placeholder="password">
+                            </div>
+                                    
+                            <div class="input-group">
+                                <div id="rememberMe">
+                                    <label>
+                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                </label>
+                                </div>
+                            </div>
+                            <div style="margin-top:10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12 controls">
+                                    <button type="submit" id="login-button" id="btn-login" href="#" class="btn btn-success">Login</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >Don't have an account! 
+                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    Sign Up Here
+                                </a>
+                                </div>
+                            </div>
+                        </div>    
+                    </form>     
+                </div>                     
+            </div>  
+        </div>
+        <!-- SignUp Form -->
+        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Sign Up</div>
+                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+                        </div>  
+                        <div class="panel-body" >
+                            <form id="signupform" class="form-horizontal" role="form">
+                                
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>                                    
+                
+                                <div class="form-group row-fluid row">
+                                    <label for="firstname" class="control-label">First Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="firstname" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="control-label">Last Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="lastname" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="control-label">Email</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" data-validation="required email" name="email" placeholder="Email Address">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="control-label">Password</label>
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control" data-validation="strength" data-validation-strength="1" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-4 col-md-9">
+                                        <button style="margin-top:20px"id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <span style="margin-left:8px;">or</span>  
+                                    </div>
+                                </div>
+                                 
+                            </form>
+                         </div>
+                    </div> 
+         </div> 
+        </div>
+    
+
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About Grayscale</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                <p>GoRaffleMe is an open sourc <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
                 <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
                 <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
             </div>
@@ -330,6 +437,9 @@
 
     <!-- Sweet Alert -->
     <script src="js/sweetalert.min.js"></script> 
+
+    <!-- Magnific Popup -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
 
 </body>
 

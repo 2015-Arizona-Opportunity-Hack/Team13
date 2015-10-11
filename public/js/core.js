@@ -74,8 +74,39 @@ function winner(id, itemId, participantId) {
 }
 /*----Objects End----*/
 
+/*----Form Elements----*/
+var loginForm = $("#loginform");
+var signUpForm = $("#signupform");
+var contactForm = $("#feedbackForm");
+/*----Form Elements End----*/
+
+/*----Functions----*/
+function login() {
+	var data = loginForm.serializeArray();
+    $.ajax({
+        type: 'POST',
+        url: 'Login API',
+        data: data,
+        dataType: 'JSON',
+        success: function(json) {
+            console.log(json);
+        }
+    });
+}
+function signUp() {
+	var data = signUpForm.serializeArray();
+    $.ajax({
+        type: 'POST',
+        url: 'Sign Up API',
+        data: data,
+        dataType: 'JSON',
+        success: function(json) {
+            console.log(json);
+        }
+    });
+}
 function submitContact() {
-	var data = $("#feedbackForm").serializeArray();
+	var data = contactForm.serializeArray();
     $.ajax({
         type: 'POST',
         url: 'Contact API',
@@ -91,11 +122,45 @@ function submitContact() {
         }
     });
 }
+/*----Functions End----*/
+
 $.validate({
+	form: loginForm,
+    onSuccess : function() {
+    login();
+        return false; // Will stop the submission of the form
+    }
+ });
+$.validate({
+	form: signUpForm,
+    onSuccess : function() {
+    signUp();
+        return false; // Will stop the submission of the form
+    }
+ });
+$.validate({
+	form: contactForm, 
     modules : 'location, date, security, file',
     onSuccess : function() {
     submitContact();
         return false; // Will stop the submission of the form
     }
  });
+$('.login-form').magnificPopup({
+		type: 'inline',
+		preloader: false,
+		focus: '#name',
+
+		// When elemened is focused, some mobile browsers in some cases zoom in
+		// It looks not nice, so we disable it:
+		callbacks: {
+			beforeOpen: function() {
+				if($(window).width() < 700) {
+					this.st.focus = false;
+				} else {
+					this.st.focus = '#name';
+				}
+			}
+		}
+	});
 });
