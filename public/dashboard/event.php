@@ -80,14 +80,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Menu Toggle Button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
-                  <img src="img/ticket.jpg" class="user-image" alt="User Image">
+                  <img src="../img/ticket.ico" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span id="fullname" class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
-                    <img src="img/ticket.jpg" class="img-circle" alt="User Image">
+                    <img src="../img/ticket.ico" class="img-circle" alt="User Image">
                     <p>
                       <span id="fullname"></span>
                     </p>
@@ -115,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="img/ticket.jpg" class="img-circle" alt="User Image">
+              <img src="../img/ticket.ico" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p><span id="fullname"></span></p>

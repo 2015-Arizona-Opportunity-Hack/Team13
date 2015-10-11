@@ -116,7 +116,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:95%;">
-                                    <a href="#" style=" color:#32718F" onClick="$('#loginbox').hide(); $('#signupbox').show()">Sign Up Here</a>
+                                    <a href="#" style=" color:#32718F" onClick="$('#loginbox').hide(); $('#signupbox').show()">Register Here</a>
                                     <br>
                                     <br>
                                     <a href="#" style=" color:#32718F">Forgot password?</a>
@@ -132,7 +132,7 @@
         <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <div class="panel-title">Sign Up</div>
+                    <div class="panel-title">Register</div>
                 </div>
                 <div class="panel-body">
                     <form id="signupform" class="form-horizontal" role="form">
@@ -143,44 +143,44 @@
                         <div class="form-group row-fluid row">
                             <label for="firstname" class="control-label">First Name</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="firstname" placeholder="First Name">
+                                <input id="firstname" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="firstname" placeholder="First Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lastname" class="control-label">Last Name</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="lastname" placeholder="Last Name">
+                                <input id="lastname" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="lastname" placeholder="Last Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="control-label">Email</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" data-validation="required email" name="email" placeholder="Email Address">
+                                <input id="email" type="text" class="form-control" data-validation="required email" name="email" placeholder="Email Address">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="control-label">Phone Number</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" data-validation="required email" name="email" placeholder="Email Address">
+                                <input id="phonenumber" type="text" class="form-control" data-validation="custom" data-validation-regexp="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" name="phonenumber" placeholder="Phone Number">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="control-label">Username</label>
                             <div class="col-md-12">
-                                <input type="text" class="form-control" data-validation="required length" name="username" placeholder="Email Address">
+                                <input id="username" type="text" class="form-control" data-validation="required length" data-validation-length="max100" name="username" placeholder="Username">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="password" class="control-label">Password</label>
                             <div class="col-md-12">
-                                <input type="password" class="form-control" data-validation="strength" data-validation-strength="1" name="password" placeholder="Password">
+                                <input id="password" type="password" class="form-control" data-validation="strength" data-validation-strength="1" name="password" placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group">
                             <!-- Button -->
                             <div class="col-md-12">
                                 <div style="border-top: 0px solid#888; padding-top:5px; font-size:95%">
-                                    <button style="margin-top:20px" id="btn-signup" type="submit" class="btn btn-info">Sign Up</button>
+                                    <button style="margin-top:20px" id="btn-signup" type="submit" class="btn btn-info">Register</button>
                                     <button style="margin-top:20px" id="btn-signup" onclick="$('#signupbox').hide(); $('#loginbox').show()" type="submit" class="btn btn-info">Sign In</button>
                                 </div>
                             </div>
@@ -256,14 +256,14 @@
                             <div class="row project-text">
                                 <div class="col-md-12">
                                     <h3 class="nopad text-center">
-                                    GoRaffleMe<br>Carnival
+                                    Go Raffle Me<br>Event Dashboard
                                 </h3>
                                     <br>
                                 </div>
                             </div>
                             <div class="row project-image">
                                 <div class="col-md-12 text-center">
-                                    <img src="img/test.png" alt="" class="img-responsive">
+                                    <img src="img/Dashboard.png" alt="" class="img-responsive">
                                 </div>
                             </div>
                         </div>
@@ -273,14 +273,14 @@
                             <div class="row project-text">
                                 <div class="col-md-12">
                                     <h3 class="nopad text-center">
-                                    GoRaffleMe<br>Carnival
+                                    Go Raffle Me<br>Event Page
                                 </h3>
                                     <br>
                                 </div>
                             </div>
                             <div class="row project-image">
                                 <div class="col-md-12 text-center">
-                                    <img src="img/test.png" alt="" class="img-responsive">
+                                    <img src="img/Event_Page.png" alt="" class="img-responsive">
                                 </div>
                             </div>
                         </div>
@@ -290,14 +290,14 @@
                             <div class="row project-text">
                                 <div class="col-md-12">
                                     <h3 class="nopad text-center">
-                                    GoRaffleMe<br>Carnival
+                                    Go Raffle Me<br>Landing Page
                                 </h3>
                                     <br>
                                 </div>
                             </div>
                             <div class="row project-image">
                                 <div class="col-md-12 text-center">
-                                    <img src="img/test.png" alt="" class="img-responsive">
+                                    <img src="img/Home.png" alt="" class="img-responsive">
                                 </div>
                             </div>
                         </div>
