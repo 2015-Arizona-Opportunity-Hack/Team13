@@ -74,6 +74,37 @@ function winner(id, itemId, participantId) {
 }
 /*----Objects End----*/
 
-
+function submitContact() {
+	var data = $("#feedbackForm").serializeArray();
+    $.ajax({
+        type: 'POST',
+        url: 'Contact API',
+        data: data,
+        dataType: 'JSON',
+       rules: {
+    field: {
+      required: true,
+      email: true
+    }
+  },
+        success: function(json) {
+            console.log(json);
+            if(json.success == true) {
+                //$('#success').modal('show');
+                //window.location = "medicationauthorize.php?pet=" + json.petid + '&name=' + json.name;
+                //console.log("medicationauthorize.php?pet=" + json.petid + '&name=' + json.name);
+            } else {
+                //$('#fail').modal('show');
+            }
+        }
+    });
+}
+$.validate({
+    modules : 'location, date, security, file',
+    onSuccess : function() {
+    submitContact();
+        return false; // Will stop the submission of the form
+    }
+ });
 
 });

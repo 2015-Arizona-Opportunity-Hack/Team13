@@ -9,13 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Go Raffle Me &#124; Home</title>
+    <link rel="shortcut icon" href="img/ticket.ico" type="image/x-icon"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +43,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
+                    <i class="fa fa-ticket"></i>  Go Raffle Me
                 </a>
             </div>
 
@@ -56,7 +58,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download">Download</a>
+                        <a class="page-scroll" href="#product">Product</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -69,15 +71,20 @@
     </nav>
 
     <!-- Intro Header -->
-    <header class="intro">
+    <header class="intro intro2">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Grayscale</h1>
+                        <h1 class="brand-heading">Go Raffle Me</h1>
                         <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
+                        <a href="#about" class="btn-circle page-scroll">
+                            <i class="fa fa-ticket"></i>
+                            Participant
+                        </a>
+
+                        <a href="#about" class="btn-circle page-scroll">Host
+                            <i class="fa fa-ticket"></i>
                         </a>
                     </div>
                 </div>
@@ -97,49 +104,205 @@
         </div>
     </section>
 
-    <!-- Download Section -->
-    <section id="download" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+
+  <!-- Product Section -->
+   <section id="product" class="container content-section text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center section-header dark">
+                    <h2>The Product</h2>
                 </div>
             </div>
         </div>
-    </section>
+        <div id="projects-carousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#projects-carousel" data-slide-to="0" class=""></li>
+                <li data-target="#projects-carousel" data-slide-to="1" class=""></li>
+                <li data-target="#projects-carousel" data-slide-to="2" class="active"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item">
+                    <div class="project-item">
+                        <div class="row project-text">
+                            <div class="col-md-3">
+                                <h3 class="project-title">
+                                    CleanCut Theme
+                                </h3>
+
+                                <p class="project-subtitle">
+                                    A beautiful Bootstrap theme
+                                </p>
+                            </div>
+
+                            <div class="project-description col-md-7">
+                                <p class="lead">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
+                                </p>
+                            </div>
+
+                            <div class="project-button-container col-md-2">
+                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
+                            </div>
+                        </div>
+
+                        <div class="row project-image">
+                            <div class="col-md-12 text-center">
+                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="project-item">
+                        <div class="row project-text">
+                            <div class="col-md-3">
+                                <h3 class="project-title">
+                                    Engem.me
+                                </h3>
+
+                                <p class="project-subtitle">
+                                    Better LinkedIn Profiles
+                                </p>
+                            </div>
+
+                            <div class="project-description col-md-7">
+                                <p class="lead">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
+                                </p>
+                            </div>
+
+                            <div class="project-button-container col-md-2">
+                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
+                            </div>
+                        </div>
+
+                        <div class="row project-image">
+                            <div class="col-md-12 text-center">
+                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item active">
+                    <div class="project-item">
+                        <div class="row project-text">
+                            <div class="col-md-3">
+                                <h3 class="project-title">
+                                    BootsrapCarnival
+                                </h3>
+
+                                <p class="project-subtitle">
+                                    Handcrafted Bootstrap themes
+                                </p>
+                            </div>
+
+                            <div class="project-description col-md-7">
+                                <p class="lead">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ratione earum delectus tempore ipsa quia laudantium. Fugiat reprehenderit ut autem dignissimos provident voluptas necessitatibus magni expedita libero.
+                                </p>
+                            </div>
+
+                            <div class="project-button-container col-md-2">
+                                <a href="http://elemental-theme-demo.herokuapp.com/#" class="btn btn-primary btn-block">View Project</a>
+                            </div>
+                        </div>
+
+                        <div class="row project-image">
+                            <div class="col-md-12 text-center">
+                                <img src="img/intro-bg.jpg" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="http://elemental-theme-demo.herokuapp.com/#projects-carousel" data-slide="prev">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+            <a class="right carousel-control" href="http://elemental-theme-demo.herokuapp.com/#projects-carousel" data-slide="next">
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
+        <div class="container">
+      <div id="contact_form" class="row">
+        <div class="col-md-12">
+          <h2>Contact Us</h2>
+          <form role="form" id="feedbackForm" data-toggle="validator" data-disable="false">
+            <div class="form-group">
+              <label class="control-label" for="name">Name *</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="name" name="name" data-validation="required length" data-validation-length="max100" name="name" placeholder="Enter your name" required/>
+                <span class="input-group-addon"><i class="fa fa-user bigicon"></i></span>
+              </div>
+              <span class="help-block" style="display: none;">Please enter your name.</span>
             </div>
+            <!-- UNCOMMENT HERE IF YOU WANT TITLE, COMPANY, WEBSITE OR PHONE FIELDS - you must also uncomment values in $fields_req in sendmail.php
+            <div class="form-group">
+              <label class="control-label" for="title">Title</label>
+              <input type="text" class="form-control optional" id="title" name="title" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="company">Company</label>
+              <input type="text" class="form-control optional" id="company" name="company" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="website">Website</label>
+              <input type="url" class="form-control optional" id="website" name="website" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="phone">Phone</label>
+              <input type="tel" class="form-control optional" id="phone" name="phone" placeholder="Enter your phone (Optional)"/>
+              <span class="help-block" style="display: none;">Please enter a valid phone number.</span>
+            </div>
+            -->
+            <div class="form-group">
+              <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="email">Email Address *</label>
+              <div class="input-group">
+                <input type="email" class="form-control" id="email" data-validation="required email" name="email" placeholder="Enter your email" required/>
+                <span class="input-group-addon"><i class="fa fa-envelope-o bigicon"></i></span>
+              </div>
+              <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="message">Message *</label>
+              <div class="input-group">
+                <textarea rows="5" cols="30" class="form-control" id="message" data-validation="required length" data-validation-length="max999" name="message" placeholder="Enter your message" required></textarea>
+                <span class="input-group-addon"><!--<i class="glyphicon glyphicon-unchecked form-control-feedback">--></i></span>
+              </div>
+              <span class="help-block" style="display: none;">Please enter a message.</span>
+            </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+              <span class="help-block" style="display: none;">Please check that you are not a robot.</span>
+            </div>
+            <span class="help-block" style="display: none;">Please enter a the security code.</span>
+            <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" data-loading-text="Sending..." style="display: block; margin-top: 10px;">Send Feedback</button>
+          </form>
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>
+    </div><!--/.container-->
         </div>
     </section>
-
-    <!-- Map Section -->
-    <div id="map"></div>
 
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; Go Raffle Me 2015</p>
         </div>
     </footer>
 
@@ -160,6 +323,9 @@
 
     <!-- Core.js -->
     <script src="js/core.js"></script>
+
+    <!-- Validator -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
 
 </body>
 

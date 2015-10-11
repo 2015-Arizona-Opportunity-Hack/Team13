@@ -3,9 +3,13 @@
 	use Models\Event;
 	use Lib\OAuth2\OAuth2;
 
-	$app->group('/event', $authorize, function() use($app, $resourceServer) {
+	$app->group('/event', function() use($app, $authorize, $resourceServer) {
 
+<<<<<<< HEAD
 		$app->post('/', function() use ($app, $resourceServer) { 
+=======
+		$app->post('/', $authorize(), function() use ($app, $resourceServer) { 
+>>>>>>> a4b1daec7e53168b5033ba910dda9e5054f58ddd
 			$event = new event();
 
 			$hostid = $resourceServer->getAccessToken()->getSession()->getOwnerId();

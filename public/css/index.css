@@ -1,0 +1,53 @@
+
+
+/*========================================
+=            DARK BG CAROUSEL            =
+========================================*/
+#projects-carousel .carousel-inner, #tour-carousel .carousel-inner {
+  width: 90%;
+  margin: 0 auto;
+}
+#projects-carousel .carousel-control, #tour-carousel .carousel-control {
+  background: none;
+}
+#projects-carousel .carousel-control.left, #tour-carousel .carousel-control.left {
+  left: -80px;
+}
+#projects-carousel .carousel-control.right, #tour-carousel .carousel-control.right {
+  right: -60px;
+}
+#projects-carousel .carousel-control i, #tour-carousel .carousel-control i {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  font-size: 1.5em;
+}
+@media (max-width: 1160px) {
+  #projects-carousel .carousel-inner, #tour-carousel .carousel-inner {
+    width: 80%;
+  }
+  #projects-carousel .carousel-control, #tour-carousel .carousel-control {
+    background: none;
+  }
+  #projects-carousel .carousel-control.left, #tour-carousel .carousel-control.left {
+    left: -30px;
+  }
+  #projects-carousel .carousel-control.right, #tour-carousel .carousel-control.right {
+    right: -10px;
+  }
+  #projects-carousel .carousel-control i, #tour-carousel .carousel-control i {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    font-size: 1.5em;
+  }
+}
+
+/*-----  End of DARK BG CAROUSEL  ------*/
+@media (max-width: 800px) {
+  #about, #services {
+    margin-bottom: 40px;
+  }
+}
