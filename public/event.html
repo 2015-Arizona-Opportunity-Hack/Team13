@@ -119,8 +119,8 @@ Tweet
             <div class="col-sm-6">
             	<div class="col-sm-9">
                 <section id="contact">
-                    <h1 class="black">USER INFO</h1>
-                    <form role="form" id="feedbackform" data-toggle="validator" data-disable="false">
+                    <h2 class="black">User Info</h2>
+                    <form role="form" id="paypalform" data-toggle="validator" data-disable="false">
                         <div class="form-group">
                             <label class="control-label" for="name">Name *</label>
                             <div class="input-group">
@@ -181,11 +181,11 @@ Tweet
                             <span>Please enter tickets wanted:</span>
                         </div>
                         <div class="btn-block text-center center-block">
-                            <input type="text" class="form-control smallbox text-center center-block" id="tickets" name="name" data-validation="required length" data-validation-length="max100" name="name" placeholder="1" required/>
+                            <input type="text" class="form-control smallbox text-center center-block" id="tickets" name="name" data-validation="number" data-validation-length="max100" name="name" placeholder="1" required/>
                         </div>
 
 <div class="btn-block text-center center-block">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 ">
