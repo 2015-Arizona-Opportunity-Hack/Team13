@@ -81,6 +81,16 @@ class Host extends Eloquent {
 		}
 	}
 
+	public function getHost($id) {
+		$host = Host::where('id',$id)->first();
+		if ($host != null) {
+			return $host;
+		}
+		else {
+			echo "HOST " . $id . " NOT FOUND!";
+		}
+	}
+
 
 	
 

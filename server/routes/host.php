@@ -20,20 +20,15 @@ $app->group('/host', function() use($app, $authorize, $resourceServer) {
 		echo $json;
 	});
 
-	$app->get('/lol/', $authorize(), function() use ($app, $resourceServer) {
-		echo $resourceServer->getAccessToken()->getSession()->getOwnerId();
-		/*$host = new host();
+	$app->get('/', $authorize(), function() use ($app, $resourceServer) {
 
-		$firstname = $app->request->post('firstname');
-		$lastname = $app->request->post('lastname');
-		$email = $app->request->post('email');
-		$phone = $app->request->post('phone');
-		$username = $app->request->post('username');
-		$password = $app->request->post('password');
+		$id = $resourceServer->getAccessToken()->getSession()->getOwnerId();
 
-		$json = $host->addHost($firstname, $lastname, $email, $phone, $username, $password);
+		$host = new host();
 
-		echo $json;*/
+		$json = $host->getHost($id);
+
+		echo $json;
 	});
 
 
