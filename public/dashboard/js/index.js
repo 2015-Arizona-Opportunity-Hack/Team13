@@ -25,7 +25,7 @@ $(function() {
 	            	console.log(json);
 
 	            	$.each($('span#fullname'), function() {
-					    $(this).html(json.firstname + ' ' + json.lastname);
+					    $(this).html(json.host.firstname + ' ' + json.host.lastname);
 					});
 
 	            }
